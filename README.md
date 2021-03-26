@@ -1,4 +1,4 @@
-''' Project for representing covid dataset in knowledge graphs using grapgDB'''
+''' Project for representing covid dataset in knowledge graphs using graphDB'''
 
 Inside ontology folder, we have two sub-folder (screenshots and graph) and two files (one python file with name read_covid_dataset and turtle file with name covid).
 
