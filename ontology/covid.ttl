@@ -1,0 +1,2534 @@
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix void:     <http://rdfs.org/ns/void#> .
+@prefix dct:      <http://purl.org/dc/terms/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix org:      <http://www.w3.org/ns/org#> .
+@prefix admingeo: <http://data.ordnancesurvey.co.uk/ontology/admingeo/> .
+@prefix interval: <http://reference.data.gov.uk/def/intervals/> .
+
+@prefix qb:       <http://purl.org/linked-data/cube#> .
+@prefix dcterms:        <http://purl.org/dc/terms/> .
+
+
+@prefix sdmx-concept:    <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-dimension:  <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-attribute:  <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix sdmx-measure:    <http://purl.org/linked-data/sdmx/2009/measure#> . 
+@prefix sdmx-metadata:   <http://purl.org/linked-data/sdmx/2009/metadata#> .
+@prefix sdmx-code:       <http://purl.org/linked-data/sdmx/2009/code#> .
+@prefix sdmx-subject:    <http://purl.org/linked-data/sdmx/2009/subject#> .
+
+@prefix ex-geo:   <http://example.org/geo#> .
+@prefix eg:       <http://example.org/ns#> .
+
+
+# -- Data Set --------------------------------------------
+
+eg:dataset1 a qb:DataSet;
+    rdfs:label "covid-19 dataset"@en;
+    rdfs:comment "contains information on newly reported COVID-19 cases and deaths in EU/EEA countries."@en;
+    dct:description "contains information on newly reported COVID-19 cases and deaths in EU/EEA countries."@en;
+	dct:publisher eg:organization;
+	qb:structure eg:dsd1;
+	dct:subject sdmx-subject:1.4;
+	qb:slice eg:slice1, eg:slice2, eg:slice3, eg:slice4, eg:slice5, eg:slice6, eg:slice7, eg:slice8, eg:slice9, eg:slice10, eg:slice11, eg:slice12, eg:slice13, eg:slice14, eg:slice15;                   
+	.
+	
+eg:organization a org:Organization, foaf:Agent;
+    rdfs:label "ECDC"@en . 
+
+
+# -- Data structure definition ----------------------------
+
+eg:dsd1 a qb:DataStructureDefinition;
+    qb:component
+	    [ qb:dimension	eg:refPeriod  ],
+	    [ qb:dimension  eg:refArea ; qb:componentAttachment qb:Slice ],
+		[ qb:dimension  ex-geo:geoid ; qb:componentAttachment qb:Slice], 
+		[ qb:dimension  ex-geo:countryterritoryCode ; qb:componentAttachment qb:Slice],
+		[ qb:dimension	eg:continentExp; qb:componentAttachment qb:Slice ],
+		[ qb:dimension  eg:popData; qb:componentAttachment qb:Slice];
+
+   # The measure(s)
+    qb:component [qb:measure eg:deaths],
+	             [qb:measure eg:cases];
+
+
+   # The attributes
+    qb:component [ qb:attribute sdmx-attribute:unitMeasure; 
+			   qb:componentRequired "true"^^xsd:boolean;
+			   qb:componentAttachment qb:DataSet; ] ;
+			   
+   # slices
+    qb:sliceKey eg:sliceByDate ;	
+	.
+
+eg:sliceByDate a qb:SliceKey;
+    rdfs:label "slice by date"@en;
+    rdfs:comment "Slice by grouping dates together, fixing area, geoid, countryterritoryCode,continentexp"@en;
+    qb:componentProperty eg:refArea, ex-geo:geoid, ex-geo:countryterritoryCode, eg:continentExp, eg:popData ;
+	.		   
+
+
+# -- Dimensions and measures  ----------------------------
+
+eg:refPeriod  a rdf:Property, qb:DimensionProperty;
+    rdfs:label "reference period"@en;
+    rdfs:subPropertyOf sdmx-dimension:refPeriod;
+    rdfs:range interval:Interval;
+    qb:concept sdmx-concept:refPeriod ;
+    .
+
+eg:refArea  a rdf:Property, qb:DimensionProperty;
+    rdfs:label "reference country"@en;
+    rdfs:subPropertyOf sdmx-dimension:refArea;
+	rdfs:range eg:allcountries;
+    qb:concept sdmx-concept:refArea ;
+    .
+
+eg:continentExp  a rdf:Property, qb:DimensionProperty;
+    rdfs:label "reference continent"@en;
+    rdfs:subPropertyOf sdmx-dimension:refArea;
+	rdfs:range eg:allcontinents;
+    qb:concept sdmx-concept:refArea ;
+	.
+
+ex-geo:geoid  a rdf:Property, qb:DimensionProperty;
+    rdfs:label "geography code "@en;
+    rdfs:subPropertyOf sdmx-code:area;
+	rdfs:range eg:allgeographycodecode;
+    qb:concept sdmx-concept:refArea ;
+	.
+
+ex-geo:countryterritoryCode  a rdf:Property, qb:DimensionProperty;
+    rdfs:label "country territory code "@en;
+    rdfs:subPropertyOf sdmx-code:area;
+	rdfs:range eg:allteritoriescode;
+    qb:concept sdmx-concept:refArea ;
+	.
+	
+eg:popData  a rdf:Property, qb:DimensionProperty;
+    rdfs:label " population of the country"@en;
+    rdfs:subPropertyOf sdmx-measure:obsvalue;
+	rdfs:range xsd:int64;
+	.
+	
+eg:deaths  a rdf:Property, qb:MeasureProperty;
+    rdfs:label "death number"@en;
+    rdfs:subPropertyOf sdmx-measure:obsValue;
+    rdfs:range xsd:int64 ;
+	.
+eg:cases  a rdf:Property, qb:MeasureProperty;
+    rdfs:label "case numbers"@en;
+    rdfs:subPropertyOf sdmx-measure:obsValue;
+    rdfs:range xsd:int64;
+	.
+
+
+# -- Observations -----------------------------------------
+# Column 1
+
+
+eg:slice1 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Germany;
+    ex-geo:geoid         ex-geo:DE;
+	ex-geo:countryterritoryCode ex-geo:DEU;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           83166711;
+    qb:observation eg:o11, eg:o12, eg:o13, eg:o14, eg:015, eg:016, eg:o17, eg:o18, eg:o19, eg:o110, eg:o111, eg:o112, eg:o113, eg:o114,     eg:o115, eg:o116, eg:o117, eg:o118, eg:o119, eg:o120, eg:o121, eg:o122;
+	.
+
+eg:o11 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      70105;
+	eg:cases       2447068;
+	.
+
+eg:o12 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      358;
+	eg:cases       3943;
+	.
+
+
+eg:o13 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      418;
+	eg:cases       9019;
+	.
+
+eg:o14 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      359;
+	eg:cases       11912;
+	.
+eg:o15 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      264;
+	eg:cases       10580;
+	.
+
+eg:o16 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      300;
+	eg:cases       9557;
+	.
+eg:o17 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      96;
+	eg:cases       8103;
+	.
+	
+eg:o18 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      34;
+	eg:cases       5011;
+	.
+eg:o19 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      255;
+	eg:cases       4252;
+	.
+eg:o110 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      300;
+	eg:cases       9146;
+	.
+eg:o111 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths      321;
+	eg:cases       14356;
+	.
+eg:o112 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths      252;
+	eg:cases       12834;
+	.
+eg:o113 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths      239;
+	eg:cases       12674;
+	.
+eg:o114 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      70;
+	eg:cases       10790;
+	.
+eg:o115 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths      47;
+	eg:cases       6604;
+	.
+eg:o116 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths      238;
+	eg:cases       5480;
+	.
+eg:o117 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths      249;
+	eg:cases       13435;
+	.
+eg:o118 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths      227;
+	eg:cases       17504;
+	.
+eg:o119 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths      226;
+	eg:cases       17482;
+	.
+eg:o120 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths      207;
+	eg:cases       16033;
+	.
+eg:o121 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths      99;
+	eg:cases       13733;
+	.
+eg:o122 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths      50;
+	eg:cases       7709;
+	.
+# column 2
+
+eg:slice2 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:France;
+    ex-geo:geoid         ex-geo:FR;
+	ex-geo:countryterritoryCode ex-geo:FRA;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           67320216;
+    qb:observation eg:o21, eg:o22, eg:o23, eg:o24, eg:o25, eg:o26, eg:o27, eg:o28, eg:o29, eg:o210, eg:o211, eg:o212, eg:o213, eg:o214, eg:o215, eg:o216, eg:o217, eg:o218, eg:o219, eg:o220, eg:o221, eg:o222;
+	.
+
+eg:o21 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      86454;
+	eg:cases       3755968;
+	.
+
+eg:o22 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      375;
+	eg:cases       4703;
+	.
+
+
+eg:o23 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      417;
+	eg:cases       22857;
+	.
+
+eg:o24 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      322;
+	eg:cases       26788;
+	.
+eg:o25 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      293;
+	eg:cases       25279;
+	.
+
+eg:o26 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      439;
+	eg:cases       23507;
+	.
+eg:o27 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      170;
+	eg:cases       23306;
+	.
+	
+eg:o28 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      130;
+	eg:cases       21825;
+	.
+eg:o29 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      359;
+	eg:cases       5327;
+	.
+eg:o210 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      368;
+	eg:cases       23302;
+	.
+eg:o211 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths      264;
+	eg:cases       30303;
+	.
+eg:o212 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths      265;
+	eg:cases       27166;
+	.
+eg:o213 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths      290;
+	eg:cases       25229;
+	.
+eg:o214 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      169;
+	eg:cases       29759;
+	.
+eg:o215 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths      140;
+	eg:cases       26343;
+	.
+eg:o216 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths      333;
+	eg:cases       6471;
+	.
+eg:o217 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths      408;
+	eg:cases       29975;
+	.
+eg:o218 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths      241;
+	eg:cases       38501;
+	.
+eg:o219 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths      269;
+	eg:cases       34998;
+	.
+eg:o220 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths      276;
+	eg:cases       35088;
+	.
+eg:o221 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths      185;
+	eg:cases       35327;
+	.
+eg:o222 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths      138;
+	eg:cases       30581;
+	.
+
+# column 3
+
+eg:slice3 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Austria;
+    ex-geo:geoid         ex-geo:AT;
+	ex-geo:countryterritoryCode ex-geo:AUT;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           8901064;
+    qb:observation eg:o31, eg:o32, eg:o33, eg:o34, eg:o35, eg:o36, eg:o37, eg:o38, eg:o39, eg:o310, eg:o311, eg:o312, eg:o313, eg:o314, eg:o315, eg:o316, eg:o317, eg:o318, eg:o319, eg:o320, eg:o321, eg:o322;
+	.
+
+eg:o31 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      8414;
+	eg:cases       456112;
+	.
+
+eg:o32 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      25;
+	eg:cases       1148;
+	.
+
+
+eg:o33 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      17;
+	eg:cases       1926;
+	.
+
+eg:o34 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      14;
+	eg:cases       2497;
+	.
+eg:o35 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      19;
+	eg:cases       2691;
+	.
+
+eg:o36 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      24;
+	eg:cases       2319;
+	.
+eg:o37 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      16;
+	eg:cases       2846;
+	.
+	
+eg:o38 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      9;
+	eg:cases       2281;
+	.
+eg:o39 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      23;
+	eg:cases       1965;
+	.
+eg:o310 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      21;
+	eg:cases       2194;
+	.
+eg:o311 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths      12;
+	eg:cases       2847;
+	.
+eg:o312 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths      18;
+	eg:cases       2847;
+	.
+eg:o313 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths      23;
+	eg:cases       3009;
+	.
+eg:o314 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      17;
+	eg:cases       3325;
+	.
+eg:o315 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths      17;
+	eg:cases       2664;
+	.
+eg:o316 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths      22;
+	eg:cases       1910;
+	.
+eg:o317 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths      23;
+	eg:cases       2487;
+	.
+eg:o318 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths      33;
+	eg:cases       2814;
+	.
+eg:o319 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths      33;
+	eg:cases       3507;
+	.
+eg:o320 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths      15;
+	eg:cases       3304;
+	.
+eg:o321 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths      22;
+	eg:cases       4051;
+	.
+eg:o322 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths      19;
+	eg:cases       2918;
+	.
+# column 4
+
+eg:slice4 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Belgium;
+    ex-geo:geoid         ex-geo:BE;
+	ex-geo:countryterritoryCode ex-geo:BEL;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           11522440;
+    qb:observation eg:o41, eg:o42, eg:o43, eg:o44, eg:o45, eg:o46, eg:o47, eg:o48, eg:o49, eg:o410, eg:o411, eg:o412, eg:o413, eg:o414, eg:o415, eg:o416, eg:o417, eg:o418, eg:o419, eg:o420;
+	.
+
+eg:o41 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      22229;
+	eg:cases       776316;
+	.
+
+eg:o42 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      25;
+	eg:cases       2774;
+	.
+
+
+eg:o43 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      26;
+	eg:cases       2772;
+	.
+
+eg:o44 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      16;
+	eg:cases       2708;
+	.
+
+eg:o45 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      33;
+	eg:cases       2749;
+	.
+
+eg:o46 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      24;
+	eg:cases       1524;
+	.
+eg:o47 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      19;
+	eg:cases       795;
+	.
+	
+eg:o48 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      36;
+	eg:cases       3709;
+	.
+eg:o49 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      23;
+	eg:cases       3419;
+	.
+eg:o410 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      24;
+	eg:cases       3412;
+	.
+eg:o411 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths      26;
+	eg:cases       3510;
+	.
+eg:o412 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths      20;
+	eg:cases       3764;
+	.
+eg:o413 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths      23;
+	eg:cases       2182;
+	.
+eg:o414 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      20;
+	eg:cases       1394;
+	.
+eg:o415 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths      25;
+	eg:cases       5275;
+	.
+eg:o416 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths      28;
+	eg:cases       4599;
+	.
+eg:o417 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths      24;
+	eg:cases       4832;
+	.
+eg:o418 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths      25;
+	eg:cases       5026;
+	.
+eg:o419 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths      30;
+	eg:cases       4732;
+	.
+eg:o420 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths      23;
+	eg:cases       1420;
+	.
+# column5
+
+eg:slice5 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Bulgaria ;
+    ex-geo:geoid         ex-geo:BG;
+	ex-geo:countryterritoryCode ex-geo:BGR;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           6951482;
+    qb:observation eg:o51, eg:o52, eg:o53, eg:o54, eg:o55, eg:o56, eg:o57, eg:o58, eg:o59, eg:o510, eg:o511, eg:o512, eg:o513, eg:o514, eg:o515, eg:o516, eg:o517, eg:o518, eg:o519, eg:o520, eg:o521, eg:o522;
+	.
+
+eg:o51 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      10191;
+	eg:cases       247038;
+	.
+
+eg:o52 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      117;
+	eg:cases       2588;
+	.
+
+
+eg:o53 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      83;
+	eg:cases       2403;
+	.
+
+eg:o54 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      22;
+	eg:cases       1154;
+	.
+eg:o55 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      93;
+	eg:cases       2198;
+	.
+
+eg:o56 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      65;
+	eg:cases       3004;
+	.
+eg:o57 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      22;
+	eg:cases       1426;
+	.
+	
+eg:o58 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      21;
+	eg:cases       497;
+	.
+eg:o59 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      150;
+	eg:cases       2995;
+	.
+eg:o510 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      138;
+	eg:cases       3502;
+	.
+eg:o511 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths      97;
+	eg:cases       2774;
+	.
+eg:o512 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths      95;
+	eg:cases       3121;
+	.
+eg:o513 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths      102;
+	eg:cases       3159;
+	.
+eg:o514 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      38;
+	eg:cases       2019;
+	.
+eg:o515 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths      51;
+	eg:cases       679;
+	.
+eg:o516 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths      187;
+	eg:cases       4637;
+	.
+eg:o517 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths      107;
+	eg:cases       4374;
+	.
+eg:o518 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths      136;
+	eg:cases       4201;
+	.
+eg:o519 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths      102;
+	eg:cases       4008;
+	.
+eg:o520 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths      115;
+	eg:cases       4162;
+	.
+eg:o521 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths      34;
+	eg:cases       2541;
+	.
+eg:o522 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths      53;
+	eg:cases       943;
+	.
+	
+# column6
+
+eg:slice6 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Croatia ;
+    ex-geo:geoid         ex-geo:HR;
+	ex-geo:countryterritoryCode ex-geo:HRV;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           4058165;
+    qb:observation eg:o61, eg:o62, eg:o63, eg:o64, eg:o65, eg:o66, eg:o67, eg:o68, eg:o69, eg:o610, eg:o611, eg:o612, eg:o613, eg:o614, eg:o615, eg:o616, eg:o617, eg:o618, eg:o619, eg:o620, eg:o621, eg:o622;
+	.
+
+eg:o61 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      5526;
+	eg:cases       242973;
+	.
+
+eg:o62 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      11;
+	eg:cases       91;
+	.
+
+
+eg:o63 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      11;
+	eg:cases       394;
+	.
+
+eg:o64 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      7;
+	eg:cases       747;
+	.
+eg:o65 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      9;
+	eg:cases       667;
+	.
+
+eg:o66 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      6;
+	eg:cases       590;
+	.
+eg:o67 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      15;
+	eg:cases       658;
+	.
+	
+eg:o68 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      5;
+	eg:cases       394;
+	.
+eg:o69 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      19;
+	eg:cases       94;
+	.
+eg:o610 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      12;
+	eg:cases       491;
+	.
+eg:o611 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths      4;
+	eg:cases       962;
+	.
+eg:o612 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths      10;
+	eg:cases       777;
+	.
+eg:o613 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths      12;
+	eg:cases       823;
+	.
+eg:o614 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      23;
+	eg:cases       823;
+	.
+eg:o615 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths      7;
+	eg:cases       561;
+	.
+eg:o616 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths       8;
+	eg:cases        129;
+	.
+eg:o617 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths      12;
+	eg:cases       691;
+	.
+eg:o618 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths      12;
+	eg:cases       1445;
+	.
+eg:o619 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths      17;
+	eg:cases       1197;
+	.
+eg:o620 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths      17;
+	eg:cases       1112;
+	.
+eg:o621 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths      10;
+	eg:cases       1186;
+	.
+eg:o622 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths      20;
+	eg:cases       834;
+	.
+	
+# column7
+
+eg:slice7 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Cyprus ;
+    ex-geo:geoid         ex-geo:CY;
+	ex-geo:countryterritoryCode ex-geo:CYP;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           888005;
+    qb:observation eg:o71, eg:o72, eg:o73, eg:o74, eg:o75, eg:o76, eg:o77, eg:o78, eg:o79, eg:o710, eg:o711, eg:o712, eg:o713, eg:o714, eg:o715, eg:o716, eg:o717, eg:o718, eg:o719, eg:o720, eg:o721, eg:o722;
+	.
+
+eg:o71 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      231;
+	eg:cases       34707;
+	.
+
+eg:o72 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       302;
+	.
+
+
+eg:o73 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      1;
+	eg:cases       288;
+	.
+
+eg:o74 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       323;
+	.
+eg:o75 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       384;
+	.
+
+eg:o76 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       273;
+	.
+eg:o77 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       298;
+	.
+	
+eg:o78 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      1;
+	eg:cases       303;
+	.
+eg:o79 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       352;
+	.
+eg:o710 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       420;
+	.
+eg:o711 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths      2;
+	eg:cases       415;
+	.
+eg:o712 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths      1;
+	eg:cases       431;
+	.
+eg:o713 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths       2;
+	eg:cases        383;
+	.
+eg:o714 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       398;
+	.
+eg:o715 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths      2;
+	eg:cases       374;
+	.
+eg:o716 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        218;
+	.
+eg:o717 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths       1;
+	eg:cases        457;
+	.
+eg:o718 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        382;
+	.
+eg:o719 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        385;
+	.
+eg:o720 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        364;
+	.
+eg:o721 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths       1;
+	eg:cases        407;
+	.
+eg:o722 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths       1;
+	eg:cases        336;
+	.
+
+# column8
+
+eg:slice8 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Czechia ;
+    ex-geo:geoid         ex-geo:CZ;
+	ex-geo:countryterritoryCode ex-geo:CZE;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           10693939;
+    qb:observation eg:o81, eg:o82, eg:o83, eg:o84, eg:o85, eg:o86, eg:o87, eg:o88, eg:o89, eg:o810, eg:o811, eg:o812, eg:o813, eg:o814, eg:o815, eg:o816, eg:o817, eg:o818, eg:o819, eg:o820, eg:o821, eg:o822;
+	.
+
+eg:o81 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      20469;
+	eg:cases       1240051;
+	.
+
+eg:o82 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      232;
+	eg:cases       12191;
+	.
+
+
+eg:o83 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      240;
+	eg:cases       16816;
+	.
+
+eg:o84 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      187;
+	eg:cases       15230;
+	.
+eg:o85 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      197;
+	eg:cases       14714;
+	.
+
+eg:o86 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      233;
+	eg:cases       13162;
+	.
+eg:o87 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      159;
+	eg:cases       9167;
+	.
+	
+eg:o88 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      165;
+	eg:cases       3960;
+	.
+eg:o89 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      265;
+	eg:cases       10524;
+	.
+eg:o810 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      238;
+	eg:cases       15380;
+	.
+eg:o811 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths      239;
+	eg:cases       14529;
+	.
+eg:o812 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths      241;
+	eg:cases       11274;
+	.
+eg:o813 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths       218;
+	eg:cases        15110;
+	.
+eg:o814 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      143;
+	eg:cases       6970;
+	.
+eg:o815 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths      153;
+	eg:cases       3342;
+	.
+eg:o816 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths       278;
+	eg:cases        10542;
+	.
+eg:o817 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths       245;
+	eg:cases        14029;
+	.
+eg:o818 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths       215;
+	eg:cases        12028;
+	.
+eg:o819 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths       214;
+	eg:cases        10677;
+	.
+eg:o820 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths       199;
+	eg:cases        9710;
+	.
+eg:o821 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths       137;
+	eg:cases        5554;
+	.
+eg:o822 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths       143;
+	eg:cases        2373;
+	.
+	
+# column9
+
+eg:slice9 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Denmark ;
+    ex-geo:geoid         ex-geo:DK;
+	ex-geo:countryterritoryCode ex-geo:DNK;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           5822763;
+    qb:observation eg:o91, eg:o92, eg:o93, eg:o94, eg:o95, eg:o96, eg:o97, eg:o98, eg:o99, eg:o910, eg:o911, eg:o912, eg:o913, eg:o914, eg:o915, eg:o916, eg:o917, eg:o918, eg:o919, eg:o920, eg:o921, eg:o922;
+	.
+
+eg:o91 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      2361;
+	eg:cases       211195;
+	.
+
+eg:o92 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      4;
+	eg:cases       497;
+	.
+
+
+eg:o93 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      2;
+	eg:cases       532;
+	.
+
+eg:o94 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      3;
+	eg:cases       574;
+	.
+eg:o95 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      4;
+	eg:cases       520;
+	.
+
+eg:o96 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      3;
+	eg:cases       614;
+	.
+eg:o97 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       394;
+	.
+	
+eg:o98 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      2;
+	eg:cases       513;
+	.
+eg:o99 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      2;
+	eg:cases       425;
+	.
+eg:o910 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       527;
+	.
+eg:o911 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths      1;
+	eg:cases       2007;
+	.
+eg:o912 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths      2;
+	eg:cases       862;
+	.
+eg:o913 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths       3;
+	eg:cases        645;
+	.
+eg:o914 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      3;
+	eg:cases       613;
+	.
+eg:o915 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths       1;
+	eg:cases        541;
+	.
+eg:o916 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths       2;
+	eg:cases        612;
+	.
+eg:o917 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths       2;
+	eg:cases        771;
+	.
+eg:o918 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths       1;
+	eg:cases        787;
+	.
+eg:o919 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths       1;
+	eg:cases        786;
+	.
+eg:o920 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        843;
+	.
+eg:o921 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths       2;
+	eg:cases        590;
+	.
+eg:o922 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths       1;
+	eg:cases        657;
+	.
+
+# column10
+
+eg:slice10 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Estonia ;
+    ex-geo:geoid         ex-geo:EE;
+	ex-geo:countryterritoryCode ex-geo:EST;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           1328976;
+    qb:observation eg:o101, eg:o102, eg:o103, eg:o104, eg:o105, eg:o106, eg:o107, eg:o108, eg:o109, eg:o1010, eg:o1011, eg:o1012, eg:o1013, eg:o1014, eg:o1015, eg:o1016, eg:o1017, eg:o1018, eg:o1019, eg:o1020, eg:o1021, eg:o1022;
+	.
+
+eg:o101 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      598;
+	eg:cases       66628;
+	.
+
+eg:o102 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       1111;
+	.
+
+
+eg:o103 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      17;
+	eg:cases       1454;
+	.
+
+eg:o104 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      8;
+	eg:cases       1417;
+	.
+eg:o105 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      14;
+	eg:cases       1534;
+	.
+
+eg:o106 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      7;
+	eg:cases       1540;
+	.
+eg:o107 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      9;
+	eg:cases       1319;
+	.
+	
+eg:o108 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      14;
+	eg:cases       1180;
+	.
+eg:o109 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      2;
+	eg:cases       1308;
+	.
+eg:o1010 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      8;
+	eg:cases       1482;
+	.
+eg:o1011 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths      9;
+	eg:cases       1956;
+	.
+eg:o1012 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       1357;
+	.
+eg:o1013 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths       24;
+	eg:cases        1586;
+	.
+eg:o1014 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      9;
+	eg:cases       935;
+	.
+eg:o1015 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths       9;
+	eg:cases        1279;
+	.
+eg:o1016 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths       11;
+	eg:cases        1462;
+	.
+eg:o1017 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths       6;
+	eg:cases        1783;
+	.
+eg:o1018 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths       13;
+	eg:cases        1700;
+	.
+eg:o1019 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths       11;
+	eg:cases        1749;
+	.
+eg:o1020 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths       11;
+	eg:cases        1248;
+	.
+eg:o1021 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths       7;
+	eg:cases        1373;
+	.
+eg:o1022 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths       10;
+	eg:cases        993;
+	.
+	
+# column11
+
+eg:slice11 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Finland ;
+    ex-geo:geoid         ex-geo:FI;
+	ex-geo:countryterritoryCode ex-geo:FIN;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           5525292;
+    qb:observation eg:o111, eg:o112, eg:o113, eg:o114, eg:o115, eg:o116, eg:o117, eg:o118, eg:o119, eg:o1110, eg:o1111, eg:o1112, eg:o1113, eg:o1114, eg:o1115, eg:o1116, eg:o1117, eg:o1118, eg:o1119, eg:o1120, eg:o1121, eg:o1122;
+	.
+
+eg:o111 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      742;
+	eg:cases       57672;
+	.
+
+eg:o112 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      8;
+	eg:cases       392;
+	.
+
+
+eg:o113 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      5;
+	eg:cases       581;
+	.
+
+eg:o114 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      4;
+	eg:cases       797;
+	.
+eg:o115 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      5;
+	eg:cases       758;
+	.
+
+eg:o116 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      3;
+	eg:cases       704;
+	.
+eg:o117 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       648;
+	.
+	
+eg:o118 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       511;
+	.
+eg:o119 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      7;
+	eg:cases       459;
+	.
+eg:o1110 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      2;
+	eg:cases       588;
+	.
+eg:o1111 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths      3;
+	eg:cases       779;
+	.
+eg:o1112 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths      4;
+	eg:cases       720;
+	.
+eg:o1113 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths       3;
+	eg:cases        706;
+	.
+eg:o1114 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       691;
+	.
+eg:o1115 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        863;
+	.
+eg:o1116 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths       14;
+	eg:cases        465;
+	.
+eg:o1117 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths       1;
+	eg:cases        517;
+	.
+eg:o1118 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths       3;
+	eg:cases        842;
+	.
+eg:o1119 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths       1;
+	eg:cases        804;
+	.
+eg:o1120 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        770;
+	.
+eg:o1121 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        856;
+	.
+eg:o1122 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        520;
+	.
+	
+# column12
+
+eg:slice12 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Greece ;
+    ex-geo:geoid         ex-geo:EL;
+	ex-geo:countryterritoryCode ex-geo:GRC;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           10718565;
+    qb:observation eg:o121, eg:o122, eg:o123, eg:o124, eg:o125, eg:o126, eg:o127, eg:o128, eg:o129, eg:o1210, eg:o1211, eg:o1212, eg:o1213, eg:o1214, eg:o1215, eg:o1216, eg:o1217, eg:o1218, eg:o1219, eg:o1220, eg:o1221, eg:o1222;
+	.
+
+eg:o121 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      6504;
+	eg:cases       191100;
+	.
+
+eg:o122 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      30;
+	eg:cases       1170;
+	.
+
+
+eg:o123 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      23;
+	eg:cases       2312;
+	.
+
+eg:o124 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      40;
+	eg:cases       2697;
+	.
+eg:o125 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      35;
+	eg:cases       2217;
+	.
+
+eg:o126 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      32;
+	eg:cases       2181;
+	.
+eg:o127 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      41;
+	eg:cases       2301;
+	.
+	
+eg:o128 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      53;
+	eg:cases       1142;
+	.
+eg:o129 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      39;
+	eg:cases       1161;
+	.
+eg:o1210 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      46;
+	eg:cases       3181;
+	.
+eg:o1211 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths       43;
+	eg:cases        2629;
+	.
+eg:o1212 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths       51;
+	eg:cases        2570;
+	.
+eg:o1213 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths       49;
+	eg:cases        2357;
+	.
+eg:o1214 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      52;
+	eg:cases       2503;
+	.
+eg:o1215 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths       53;
+	eg:cases        1626;
+	.
+eg:o1216 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths       46;
+	eg:cases        1134;
+	.
+eg:o1217 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths       59;
+	eg:cases        1508;
+	.
+eg:o1218 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths       56;
+	eg:cases        3458;
+	.
+eg:o1219 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths       45;
+	eg:cases        3070;
+	.
+eg:o1220 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths       64;
+	eg:cases        2762;
+	.
+eg:o1221 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths       60;
+	eg:cases        1432;
+	.
+eg:o1222 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths       41;
+	eg:cases        2614;
+	.
+
+# column13
+
+eg:slice13 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Hungary ;
+    ex-geo:geoid         ex-geo:HU;
+	ex-geo:countryterritoryCode ex-geo:HUN;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           9769526;
+    qb:observation eg:o131, eg:o132, eg:o133, eg:o134, eg:o135, eg:o136, eg:o137, eg:o138, eg:o139, eg:o1310, eg:o1311, eg:o1312, eg:o1313, eg:o1314, eg:o1315, eg:o1316, eg:o1317, eg:o1318, eg:o1319, eg:o1320, eg:o1321, eg:o1322;
+	.
+
+eg:o131 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      15058;
+	eg:cases       432925;
+	.
+
+eg:o132 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      130;
+	eg:cases       2764;
+	.
+
+
+eg:o133 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      136;
+	eg:cases       4211;
+	.
+
+eg:o134 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      152;
+	eg:cases       6278;
+	.
+eg:o135 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      143;
+	eg:cases       6369;
+	.
+
+eg:o136 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      146;
+	eg:cases       7269;
+	.
+eg:o137 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths      108;
+	eg:cases       6201;
+	.
+	
+eg:o138 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths      115;
+	eg:cases       2696;
+	.
+eg:o139 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths      158;
+	eg:cases       6494;
+	.
+eg:o1310 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths      179;
+	eg:cases       5653;
+	.
+eg:o1311 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths       172;
+	eg:cases        8312;
+	.
+eg:o1312 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths       130;
+	eg:cases        9011;
+	.
+eg:o1313 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths       163;
+	eg:cases        9444;
+	.
+eg:o1314 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths      162;
+	eg:cases       8863;
+	.
+eg:o1315 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths       131;
+	eg:cases        7706;
+	.
+eg:o1316 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths       143;
+	eg:cases        4926;
+	.
+eg:o1317 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths       195;
+	eg:cases        3456;
+	.
+eg:o1318 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths       207;
+	eg:cases        6502;
+	.
+eg:o1319 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths       213;
+	eg:cases        10759;
+	.
+eg:o1320 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths       227;
+	eg:cases        11132;
+	.
+eg:o1321 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths       194;
+	eg:cases        10625;
+	.
+eg:o1322 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths       189;
+	eg:cases        9046;
+	.
+	
+# column14
+
+eg:slice14 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Iceland ;
+    ex-geo:geoid         ex-geo:IS;
+	ex-geo:countryterritoryCode ex-geo:ISL;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           364134;
+    qb:observation eg:o141, eg:o142, eg:o143, eg:o144, eg:o145, eg:o146, eg:o147, eg:o148, eg:o149, eg:o1410, eg:o1411, eg:o1412, eg:o1413, eg:o1414, eg:o1415, eg:o1416, eg:o1417, eg:o1418, eg:o1419, eg:o1420, eg:o1421, eg:o1422;
+	.
+
+eg:o141 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      29;
+	eg:cases       6049;
+	.
+
+eg:o142 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       5;
+	.
+
+
+eg:o143 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       1;
+	.
+
+eg:o144 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       3;
+	.
+eg:o145 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       0;
+	.
+
+eg:o146 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       1;
+	.
+eg:o147 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        0;
+	.
+	
+eg:o148 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        0;
+	.
+eg:o149 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        5;
+	.
+eg:o1410 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        3;
+	.
+eg:o1411 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         2;
+	.
+eg:o1412 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         1;
+	.
+eg:o1413 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         2;
+	.
+eg:o1414 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        0;
+	.
+eg:o1415 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         0;
+	.
+eg:o1416 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         11;
+	.
+eg:o1417 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         4;
+	.
+eg:o1418 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         2;
+	.
+eg:o1419 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         2;
+	.
+eg:o1420 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         6;
+	.
+eg:o1421 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         0;
+	.
+eg:o1422 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         0;
+	.
+	
+# column15
+
+eg:slice15 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Ireland ;
+    ex-geo:geoid         ex-geo:IE;
+	ex-geo:countryterritoryCode ex-geo:IRL;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           4964440;
+    qb:observation eg:o151, eg:o152, eg:o153, eg:o154, eg:o155, eg:o156, eg:o157, eg:o158, eg:o159, eg:o1510, eg:o1511, eg:o1512, eg:o1513, eg:o1514, eg:o1515, eg:o1516, eg:o1517, eg:o1518, eg:o1519, eg:o1520, eg:o1521, eg:o1522;
+	.
+
+eg:o151 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      4319;
+	eg:cases       219592;
+	.
+
+eg:o152 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      0;
+	eg:cases       681;
+	.
+
+
+eg:o153 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      14;
+	eg:cases       357;
+	.
+
+eg:o154 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths       24;
+	eg:cases        559;
+	.
+eg:o155 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths       39;
+	eg:cases        460;
+	.
+
+eg:o156 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths       9;
+	eg:cases        520; 
+	.
+eg:o157 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths       14;
+	eg:cases        530;
+	.
+	
+eg:o158 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths       3;
+	eg:cases        520;
+	.
+eg:o159 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths       0;
+	eg:cases        432;
+	.
+eg:o1510 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths       30;
+	eg:cases        306;
+	.
+eg:o1511 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths        47;
+	eg:cases         631;
+	.
+eg:o1512 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths        10;
+	eg:cases         591;
+	.
+eg:o1513 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths        9;
+	eg:cases         641;
+	.
+eg:o1514 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths        16;
+	eg:cases         538;
+	.
+eg:o1515 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         383;
+	.
+eg:o1516 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         575;
+	.
+eg:o1517 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths        18;
+	eg:cases         347;
+	.
+eg:o1518 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths        14;
+	eg:cases         552;
+	.
+eg:o1519 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths        0;
+	eg:cases         581;
+	.
+eg:o1520 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths        10;
+	eg:cases         510;
+	.
+eg:o1521 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths        9;
+	eg:cases         525;
+	.
+eg:o1522 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths        2;
+	eg:cases         768;
+	.
+	
+# column16
+
+eg:slice16 a qb:Slice;
+    qb:sliceStructure  eg:sliceByDate ;
+    eg:refArea          ex-geo:Italy ;
+    ex-geo:geoid         ex-geo:IT;
+	ex-geo:countryterritoryCode ex-geo:ITA;
+	eg:continentExp      ex-geo:Europe;
+	eg:PopData           59641488;
+    qb:observation eg:o161, eg:o162, eg:o163, eg:o164, eg:o165, eg:o166, eg:o167, eg:o168, eg:o169, eg:o1610, eg:o1611, eg:o1612, eg:o1613, eg:o1614, eg:o1615, eg:o1616, eg:o1617, eg:o1618, eg:o1619, eg:o1620, eg:o1621, eg:o1622;
+	.
+
+eg:o161 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "01-03-2021"^^xsd:date;
+	eg:deaths      97699;
+	eg:cases       2925265;
+	.
+
+eg:o162 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "02-03-2021"^^xsd:date;
+	eg:deaths      246;
+	eg:cases       13106;
+	.
+
+
+eg:o163 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "03-03-2021"^^xsd:date;
+	eg:deaths      343;
+	eg:cases       17063;
+	.
+
+eg:o164 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "04-03-2021"^^xsd:date;
+	eg:deaths       347;
+	eg:cases        20840;
+	.
+eg:o165 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "05-03-2021"^^xsd:date;
+	eg:deaths       339;
+	eg:cases        22845;
+	.
+
+eg:o166 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "06-03-2021"^^xsd:date;
+	eg:deaths       297;
+	eg:cases        24010; 
+	.
+eg:o167 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "07-03-2021"^^xsd:date;
+	eg:deaths       307;
+	eg:cases        23633;
+	.
+	
+eg:o168 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "08-03-2021"^^xsd:date;
+	eg:deaths       207;
+	eg:cases        20724;
+	.
+eg:o169 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "09-03-2021"^^xsd:date;
+	eg:deaths       318;
+	eg:cases        13882;
+	.
+eg:o1610 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "10-03-2021"^^xsd:date;
+	eg:deaths       376;
+	eg:cases        19725;
+	.
+eg:o1611 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "11-03-2021"^^xsd:date;
+	eg:deaths        332;
+	eg:cases         22275;
+	.
+eg:o1612 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "12-03-2021"^^xsd:date;
+	eg:deaths        373;
+	eg:cases         25649;
+	.
+eg:o1613 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "13-03-2021"^^xsd:date;
+	eg:deaths        380;
+	eg:cases         26790;
+	.
+eg:o1614 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "14-03-2021"^^xsd:date;
+	eg:deaths        317;
+	eg:cases         26031;
+	.
+eg:o1615 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "15-03-2021"^^xsd:date;
+	eg:deaths        264;
+	eg:cases         21304;
+	.
+eg:o1616 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "16-03-2021"^^xsd:date;
+	eg:deaths        354;
+	eg:cases         15252;
+	.
+eg:o1617 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "17-03-2021"^^xsd:date;
+	eg:deaths        502;
+	eg:cases         20376;
+	.
+eg:o1618 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "18-03-2021"^^xsd:date;
+	eg:deaths        431;
+	eg:cases         23040;
+	.
+eg:o1619 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "19-03-2021"^^xsd:date;
+	eg:deaths        423;
+	eg:cases         24901;
+	.
+eg:o1620 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "20-03-2021"^^xsd:date;
+	eg:deaths        386;
+	eg:cases         25707;
+	.
+eg:o1621 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "21-03-2021"^^xsd:date;
+	eg:deaths        401;
+	eg:cases         23913;
+	.
+eg:o1622 a qb:Observation;
+    qb:dataset eg:dataset1;
+	eg:refPeriod   "22-03-2021"^^xsd:date;
+	eg:deaths        300;
+	eg:cases         20045;
+	.
