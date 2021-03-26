@@ -10,11 +10,11 @@ Steps to follow:
        
        - we have Dockerfile which is used to run free version of GraphDB.
 	   
-       - Then, we have GraphDB zip file which is very important to run the current free version of GraphDB (9.6.0).
+       - Then, we have to add GraphDB zip file which is very important to run the current free version of GraphDB (9.6.0). (I will send you zip file via email because it is more than 100 mb so I cannot push it here)
 	   
-       - And, we have graphdb tar file with name graphdb which can be directly used in docker to run the docker image that I have     created and to visualize data which I have worked with. 
+ NOTE:  You can also graphdb tar file with name graphdb which can be directly used in docker to run the docker image that I have     created and to visualize data    which I have worked with. 
 	   
-       - Note: you can also create your own image just by running first two steps and in case if you dont want to create your own image just run graphdb tar file with docker and you can see the data which is present in my GraphDB repository and the name of my repository is rohit.
+- Note: you can also create your own image just by running first two steps and in case if you dont want to create your own image just run graphdb tar file with docker and you can see the data which is present in my GraphDB repository and the name of my repository is rohit.
 	   
 3. If you are running your own image then you can import rdf data by using covid.ttl file which is present here. One important thing covid.ttl includes rdf reprentation for 15 countries that I have created from csv covid data (see read_covid_dataset python file).
 
