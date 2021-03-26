@@ -1,4 +1,4 @@
-''' Project for representing covid dataset in knowledge graphs using graphDB'''
+''' Project for representing covid dataset in knowledge graphs using graphDB '''
 
 Inside ontology folder, we have two sub-folder (screenshots and graph) and two files (one python file with name read_covid_dataset and turtle file with name covid).
 
@@ -19,14 +19,12 @@ Steps to follow:
         - docker build -t imagename:tag . 
         - docker run --publish 7200:7200 imagename 
 
-
-
-once the graphdb is up, you can import rdf data by using covid.ttl file which is present here. One important thing covid.ttl includes rdf reprentation for 15 countries that I have created from csv covid data (see read_covid_dataset python file).
+once the graphdb is up, you can import rdf data by using covid.ttl file which is present here. One important thing covid.ttl includes rdf representation for 15 countries created from csv covid data (see read_covid_dataset python file).
 
 4. Finally, there is another folder named screenshots, where you can see some of the queries that I ran and their results. Also, there is some other screenshots depicting some of the insights of the work (different classes, their relationship and so on).
 
-''' steps that have been used to create docker image, container and to save it into tar file'''
+''' steps that have been used to create docker image, container and to save it into tar file '''
 
-    - docker build -t grapgdb:latest .
+    - docker build -t graphdb:latest .
     - docker run -p 7200:7200 -v /data:/opt/graphdb/home --name my-gdb1 graphdb:latest
     - docker save -o ../graph/graphdb.tar graphdb
