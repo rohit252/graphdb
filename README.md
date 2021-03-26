@@ -12,12 +12,12 @@ Steps to follow:
 
         - GraphDB zip file which is very important to run the current free version of GraphDB (9.6.0).
 
-        - graphdb tar file with name graphdb which can be directly used in docker to run the docker image that I have     created and to visualize data. You can see the data which is present in my GraphDB repository and the name of my repository is rohit. (you can remove this tar file if you are creating your new docker image and for that just use Dockerfile and graphdb.zip file inside graph folder)
+        - graphdb tar file with name graphdb which can be directly used in docker to run the docker image that I have created and to visualize data. You can see the data which is present in my GraphDB repository and the name of my repository is rohit. (you can remove this tar file if you are creating your new docker image and for that just use Dockerfile and graphdb.zip file inside graph folder)
 
 3. If you are running your own image then just make graph folder on your desktop with Dockerfile and graphdb zip file in it without using tar file and build and run the image using:
 
-    - docker build -t imagename:tag . 
-    - docker run --publish 7200:7200 imagename 
+        - docker build -t imagename:tag . 
+        - docker run --publish 7200:7200 imagename 
 
 
 
