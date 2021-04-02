@@ -1,9 +1,7 @@
 ''' Project for representing covid dataset in knowledge graphs using graphDB '''
 
 
--------------------Requirements---------------
-
- Please install all requirememts before moving forward
+Please install all requirements in order run the program:
     
 	- pip install pandas
 	- pip install rdflib
