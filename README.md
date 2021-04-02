@@ -32,7 +32,7 @@ Now, open the graphdb free version on the local host which we will get after run
         
 	- **url_path** : where we can simply pass the url of the csv file.
 	- **rdf_path** : It can be used to store our rdf graph in turtle format locally. Although to run this program we don't require this variable path. So it is an optional,           just in case we want to store the turtle file locally we can use this path.
-	- Third path is the path of our repository in GraphDb, just specify http://localhost:7200/repositories/repository-id/statements where repositor-id is the id of the                 repository that you created in GraphDB.
+	- **graphdb_path** : This is the path of our repository in GraphDb, just specify http://localhost:7200/repositories/repository-id/statements where repositor-id is the id of the repository that you created in GraphDB.
 
 NOTE: If you dont wish to store rdf locally then please remove **rdf_path** from path.properties and also comment out line number 26 and 237 in csv_to_rdf file and then use the files. As I was storing it locally just to see the contents in it that is why I used the paths but you can remove simply remove the paths if you dont want to store rdf file locally.
 
