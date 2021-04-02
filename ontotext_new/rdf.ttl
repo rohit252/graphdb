@@ -1,0 +1,7086 @@
+@prefix ns1: <http://example.org/ns#> .
+@prefix ns2: <http://purl.org/linked-data/cube#> .
+@prefix ns3: <http://example.org/geo#> .
+@prefix ns4: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns1:dateRep a ns2:DimensionProperty,
+        rdf:Property ;
+    rdfs:label "refernce period"@en ;
+    ns2:concept <http://purl.org/linked-data/sdmx/2009/concept#refPeriod> ;
+    rdfs:range <http://reference.data.gov.uk/def/intervals/Interval> ;
+    rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> .
+
+ns3:countryterritoryCode a ns2:DimensionProperty,
+        rdf:Property ;
+    rdfs:label "country territory code "@en ;
+    ns2:concept <http://purl.org/linked-data/sdmx/2009/concept#refArea> ;
+    rdfs:range ns1:allteritoriescode ;
+    rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/code#area> .
+
+ns1:cases a ns2:MeasureProperty,
+        rdf:Property ;
+    rdfs:label "case number"@en ;
+    rdfs:range xsd:int64 ;
+    rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/measure#obsvalue> .
+
+ns1:countriesAndTerritories a ns2:DimensionProperty,
+        rdf:Property ;
+    rdfs:label "refernce country"@en ;
+    ns2:concept <http://purl.org/linked-data/sdmx/2009/concept#refArea> ;
+    rdfs:range ns1:allcountries ;
+    rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/dimension#refArea> .
+
+ns1:deaths a ns2:MeasureProperty,
+        rdf:Property ;
+    rdfs:label "death number"@en ;
+    rdfs:range xsd:int64 ;
+    rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/measure#obsvalue> .
+
+ns1:dsd1 a ns2:DataStructureDefinition ;
+    ns2:component [ ns2:dimension ns2:dateRep ],
+        [ ns2:componentAttachment ns2:Slice ;
+            ns2:dimension ns2:countriesAndTerritories ],
+        [ ns2:componentAttachment ns2:Slice ;
+            ns2:dimension ns1:continentExp ],
+        [ ns2:componentAttachment ns2:Slice ;
+            ns2:dimension ns3:countryterritoryCode ],
+        [ ns2:componentAttachment ns2:Slice ;
+            ns2:dimension ns1:popData2020 ],
+        [ ns2:measure ns1:deaths ],
+        [ ns2:attribute <http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure> ;
+            ns2:componentAttachment ns2:DataSet ;
+            ns2:componentRequired true ],
+        [ ns2:measure ns1:cases ],
+        [ ns2:componentAttachment ns2:Slice ;
+            ns2:dimension ns3:geoId ] ;
+    ns2:sliceKey ns1:sliceByDate .
+
+ns1:o0011 a ns2:observation ;
+    ns1:cases 3107 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 28 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00110 a ns2:observation ;
+    ns1:cases 2306 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 23 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00111 a ns2:observation ;
+    ns1:cases 2918 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 19 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00112 a ns2:observation ;
+    ns1:cases 4051 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 22 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00113 a ns2:observation ;
+    ns1:cases 3304 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00114 a ns2:observation ;
+    ns1:cases 3507 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 33 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00115 a ns2:observation ;
+    ns1:cases 2814 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 33 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00116 a ns2:observation ;
+    ns1:cases 2487 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 23 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00117 a ns2:observation ;
+    ns1:cases 1910 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 22 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00118 a ns2:observation ;
+    ns1:cases 2664 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00119 a ns2:observation ;
+    ns1:cases 3325 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0012 a ns2:observation ;
+    ns1:cases 2810 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 28 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00120 a ns2:observation ;
+    ns1:cases 3009 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 23 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00121 a ns2:observation ;
+    ns1:cases 2847 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 18 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00122 a ns2:observation ;
+    ns1:cases 2847 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00123 a ns2:observation ;
+    ns1:cases 2194 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 21 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00124 a ns2:observation ;
+    ns1:cases 1965 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 23 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00125 a ns2:observation ;
+    ns1:cases 2281 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00126 a ns2:observation ;
+    ns1:cases 2846 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 16 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00127 a ns2:observation ;
+    ns1:cases 2319 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00128 a ns2:observation ;
+    ns1:cases 2691 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 19 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00129 a ns2:observation ;
+    ns1:cases 2497 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0013 a ns2:observation ;
+    ns1:cases 3240 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00130 a ns2:observation ;
+    ns1:cases 1926 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00131 a ns2:observation ;
+    ns1:cases 1148 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 25 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00132 a ns2:observation ;
+    ns1:cases 456112 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 8414 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0014 a ns2:observation ;
+    ns1:cases 2667 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0015 a ns2:observation ;
+    ns1:cases 3896 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 27 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0016 a ns2:observation ;
+    ns1:cases 3487 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0017 a ns2:observation ;
+    ns1:cases 3516 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 16 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0018 a ns2:observation ;
+    ns1:cases 3262 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 29 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0019 a ns2:observation ;
+    ns1:cases 2715 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 40 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0021 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00210 a ns2:observation ;
+    ns1:cases 5994 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00211 a ns2:observation ;
+    ns1:cases 6279 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 33 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00212 a ns2:observation ;
+    ns1:cases 1590 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00213 a ns2:observation ;
+    ns1:cases 2840 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00214 a ns2:observation ;
+    ns1:cases 5193 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 31 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00215 a ns2:observation ;
+    ns1:cases 5046 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 26 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00216 a ns2:observation ;
+    ns1:cases 4838 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 25 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00217 a ns2:observation ;
+    ns1:cases 4602 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 28 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00218 a ns2:observation ;
+    ns1:cases 5279 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 25 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00219 a ns2:observation ;
+    ns1:cases 1396 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 20 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0022 a ns2:observation ;
+    ns1:cases 2 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00220 a ns2:observation ;
+    ns1:cases 2182 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00221 a ns2:observation ;
+    ns1:cases 3765 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 20 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00222 a ns2:observation ;
+    ns1:cases 3515 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 26 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00223 a ns2:observation ;
+    ns1:cases 3412 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00224 a ns2:observation ;
+    ns1:cases 3419 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 23 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00225 a ns2:observation ;
+    ns1:cases 3709 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 36 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00226 a ns2:observation ;
+    ns1:cases 795 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 19 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00227 a ns2:observation ;
+    ns1:cases 1524 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 25 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00228 a ns2:observation ;
+    ns1:cases 2750 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 33 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00229 a ns2:observation ;
+    ns1:cases 2708 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 16 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0023 a ns2:observation ;
+    ns1:cases 2449 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 32 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00230 a ns2:observation ;
+    ns1:cases 2772 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 26 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00231 a ns2:observation ;
+    ns1:cases 2775 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 25 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00232 a ns2:observation ;
+    ns1:cases 776322 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 22255 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0024 a ns2:observation ;
+    ns1:cases 5684 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 31 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0025 a ns2:observation ;
+    ns1:cases 1643 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 23 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0026 a ns2:observation ;
+    ns1:cases 3053 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 28 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0027 a ns2:observation ;
+    ns1:cases 5705 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 20 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0028 a ns2:observation ;
+    ns1:cases 5576 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 34 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0029 a ns2:observation ;
+    ns1:cases 5542 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 27 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0031 a ns2:observation ;
+    ns1:cases 4207 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 129 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00310 a ns2:observation ;
+    ns1:cases 4467 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 169 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00311 a ns2:observation ;
+    ns1:cases 943 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 53 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00312 a ns2:observation ;
+    ns1:cases 2541 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 34 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00313 a ns2:observation ;
+    ns1:cases 4162 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 115 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00314 a ns2:observation ;
+    ns1:cases 4008 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 102 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00315 a ns2:observation ;
+    ns1:cases 4201 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 136 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00316 a ns2:observation ;
+    ns1:cases 4374 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 107 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00317 a ns2:observation ;
+    ns1:cases 4637 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 187 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00318 a ns2:observation ;
+    ns1:cases 679 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 51 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00319 a ns2:observation ;
+    ns1:cases 2019 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 38 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0032 a ns2:observation ;
+    ns1:cases 5176 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 155 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00320 a ns2:observation ;
+    ns1:cases 3159 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 102 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00321 a ns2:observation ;
+    ns1:cases 3121 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 95 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00322 a ns2:observation ;
+    ns1:cases 2774 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 97 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00323 a ns2:observation ;
+    ns1:cases 3502 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 138 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00324 a ns2:observation ;
+    ns1:cases 2995 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 150 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00325 a ns2:observation ;
+    ns1:cases 497 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 21 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00326 a ns2:observation ;
+    ns1:cases 1426 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 22 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00327 a ns2:observation ;
+    ns1:cases 3004 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 65 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00328 a ns2:observation ;
+    ns1:cases 2198 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 93 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00329 a ns2:observation ;
+    ns1:cases 1154 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 22 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0033 a ns2:observation ;
+    ns1:cases 4497 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 203 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00330 a ns2:observation ;
+    ns1:cases 2403 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 83 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00331 a ns2:observation ;
+    ns1:cases 2588 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 117 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00332 a ns2:observation ;
+    ns1:cases 247038 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 10191 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0034 a ns2:observation ;
+    ns1:cases 983 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 60 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0035 a ns2:observation ;
+    ns1:cases 2537 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 49 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0036 a ns2:observation ;
+    ns1:cases 4129 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 89 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0037 a ns2:observation ;
+    ns1:cases 3988 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 99 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0038 a ns2:observation ;
+    ns1:cases 4375 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 106 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0039 a ns2:observation ;
+    ns1:cases 4851 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 119 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0041 a ns2:observation ;
+    ns1:cases 2623 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 19 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00410 a ns2:observation ;
+    ns1:cases 150 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 13 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00411 a ns2:observation ;
+    ns1:cases 834 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 20 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00412 a ns2:observation ;
+    ns1:cases 1186 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00413 a ns2:observation ;
+    ns1:cases 1112 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00414 a ns2:observation ;
+    ns1:cases 1197 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00415 a ns2:observation ;
+    ns1:cases 1445 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00416 a ns2:observation ;
+    ns1:cases 691 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00417 a ns2:observation ;
+    ns1:cases 129 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00418 a ns2:observation ;
+    ns1:cases 561 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00419 a ns2:observation ;
+    ns1:cases 823 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 23 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0042 a ns2:observation ;
+    ns1:cases 1487 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00420 a ns2:observation ;
+    ns1:cases 823 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00421 a ns2:observation ;
+    ns1:cases 777 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00422 a ns2:observation ;
+    ns1:cases 962 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00423 a ns2:observation ;
+    ns1:cases 491 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00424 a ns2:observation ;
+    ns1:cases 94 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 19 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00425 a ns2:observation ;
+    ns1:cases 394 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00426 a ns2:observation ;
+    ns1:cases 658 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00427 a ns2:observation ;
+    ns1:cases 590 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00428 a ns2:observation ;
+    ns1:cases 667 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00429 a ns2:observation ;
+    ns1:cases 747 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0043 a ns2:observation ;
+    ns1:cases 300 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 18 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00430 a ns2:observation ;
+    ns1:cases 394 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00431 a ns2:observation ;
+    ns1:cases 91 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00432 a ns2:observation ;
+    ns1:cases 242973 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 5526 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0044 a ns2:observation ;
+    ns1:cases 1321 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 21 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0045 a ns2:observation ;
+    ns1:cases 1790 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 18 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0046 a ns2:observation ;
+    ns1:cases 1802 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 16 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0047 a ns2:observation ;
+    ns1:cases 1673 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0048 a ns2:observation ;
+    ns1:cases 1891 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 20 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0049 a ns2:observation ;
+    ns1:cases 956 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 22 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0051 a ns2:observation ;
+    ns1:cases 434 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00510 a ns2:observation ;
+    ns1:cases 410 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00511 a ns2:observation ;
+    ns1:cases 336 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00512 a ns2:observation ;
+    ns1:cases 407 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00513 a ns2:observation ;
+    ns1:cases 364 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00514 a ns2:observation ;
+    ns1:cases 385 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00515 a ns2:observation ;
+    ns1:cases 382 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00516 a ns2:observation ;
+    ns1:cases 475 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00517 a ns2:observation ;
+    ns1:cases 218 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00518 a ns2:observation ;
+    ns1:cases 374 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00519 a ns2:observation ;
+    ns1:cases 398 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0052 a ns2:observation ;
+    ns1:cases 439 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00520 a ns2:observation ;
+    ns1:cases 383 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00521 a ns2:observation ;
+    ns1:cases 431 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00522 a ns2:observation ;
+    ns1:cases 415 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00523 a ns2:observation ;
+    ns1:cases 420 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00524 a ns2:observation ;
+    ns1:cases 352 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00525 a ns2:observation ;
+    ns1:cases 303 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00526 a ns2:observation ;
+    ns1:cases 298 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00527 a ns2:observation ;
+    ns1:cases 273 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00528 a ns2:observation ;
+    ns1:cases 384 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00529 a ns2:observation ;
+    ns1:cases 323 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0053 a ns2:observation ;
+    ns1:cases 360 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00530 a ns2:observation ;
+    ns1:cases 288 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00531 a ns2:observation ;
+    ns1:cases 302 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00532 a ns2:observation ;
+    ns1:cases 34707 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 231 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0054 a ns2:observation ;
+    ns1:cases 326 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0055 a ns2:observation ;
+    ns1:cases 334 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0056 a ns2:observation ;
+    ns1:cases 361 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0057 a ns2:observation ;
+    ns1:cases 324 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0058 a ns2:observation ;
+    ns1:cases 293 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0059 a ns2:observation ;
+    ns1:cases 365 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0061 a ns2:observation ;
+    ns1:cases 7285 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 165 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00610 a ns2:observation ;
+    ns1:cases 8205 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 245 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00611 a ns2:observation ;
+    ns1:cases 2373 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 143 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00612 a ns2:observation ;
+    ns1:cases 5554 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 137 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00613 a ns2:observation ;
+    ns1:cases 9710 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 199 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00614 a ns2:observation ;
+    ns1:cases 10677 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 214 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00615 a ns2:observation ;
+    ns1:cases 12028 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 215 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00616 a ns2:observation ;
+    ns1:cases 14029 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 245 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00617 a ns2:observation ;
+    ns1:cases 10542 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 278 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00618 a ns2:observation ;
+    ns1:cases 3342 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 153 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00619 a ns2:observation ;
+    ns1:cases 6970 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 143 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0062 a ns2:observation ;
+    ns1:cases 8664 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 199 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00620 a ns2:observation ;
+    ns1:cases 15110 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 218 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00621 a ns2:observation ;
+    ns1:cases 11274 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 241 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00622 a ns2:observation ;
+    ns1:cases 14529 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 239 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00623 a ns2:observation ;
+    ns1:cases 15380 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 238 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00624 a ns2:observation ;
+    ns1:cases 10524 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 265 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00625 a ns2:observation ;
+    ns1:cases 3960 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 165 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00626 a ns2:observation ;
+    ns1:cases 9167 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 159 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00627 a ns2:observation ;
+    ns1:cases 13162 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 233 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00628 a ns2:observation ;
+    ns1:cases 14714 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 197 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00629 a ns2:observation ;
+    ns1:cases 15230 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 187 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0063 a ns2:observation ;
+    ns1:cases 6896 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 85 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00630 a ns2:observation ;
+    ns1:cases 16816 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 240 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00631 a ns2:observation ;
+    ns1:cases 12191 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 232 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00632 a ns2:observation ;
+    ns1:cases 1240051 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 20469 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0064 a ns2:observation ;
+    ns1:cases 5719 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 263 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0065 a ns2:observation ;
+    ns1:cases 7699 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 96 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0066 a ns2:observation ;
+    ns1:cases 47 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 139 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0067 a ns2:observation ;
+    ns1:cases 7946 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 189 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0068 a ns2:observation ;
+    ns1:cases 8851 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 192 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0069 a ns2:observation ;
+    ns1:cases 10972 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 203 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0071 a ns2:observation ;
+    ns1:cases 701 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00710 a ns2:observation ;
+    ns1:cases 772 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00711 a ns2:observation ;
+    ns1:cases 657 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00712 a ns2:observation ;
+    ns1:cases 590 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00713 a ns2:observation ;
+    ns1:cases 843 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00714 a ns2:observation ;
+    ns1:cases 786 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00715 a ns2:observation ;
+    ns1:cases 787 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00716 a ns2:observation ;
+    ns1:cases 771 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00717 a ns2:observation ;
+    ns1:cases 612 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00718 a ns2:observation ;
+    ns1:cases 541 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00719 a ns2:observation ;
+    ns1:cases 613 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0072 a ns2:observation ;
+    ns1:cases 1210 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00720 a ns2:observation ;
+    ns1:cases 645 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00721 a ns2:observation ;
+    ns1:cases 862 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00722 a ns2:observation ;
+    ns1:cases 2007 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00723 a ns2:observation ;
+    ns1:cases 527 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00724 a ns2:observation ;
+    ns1:cases 425 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00725 a ns2:observation ;
+    ns1:cases 513 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00726 a ns2:observation ;
+    ns1:cases 394 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00727 a ns2:observation ;
+    ns1:cases 614 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00728 a ns2:observation ;
+    ns1:cases 520 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00729 a ns2:observation ;
+    ns1:cases 574 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0073 a ns2:observation ;
+    ns1:cases 679 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00730 a ns2:observation ;
+    ns1:cases 532 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00731 a ns2:observation ;
+    ns1:cases 497 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00732 a ns2:observation ;
+    ns1:cases 211195 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 2361 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0074 a ns2:observation ;
+    ns1:cases 964 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0075 a ns2:observation ;
+    ns1:cases 416 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0076 a ns2:observation ;
+    ns1:cases 789 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0077 a ns2:observation ;
+    ns1:cases 814 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0078 a ns2:observation ;
+    ns1:cases -2001 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0079 a ns2:observation ;
+    ns1:cases 754 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0081 a ns2:observation ;
+    ns1:cases 829 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00810 a ns2:observation ;
+    ns1:cases 1062 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00811 a ns2:observation ;
+    ns1:cases 993 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00812 a ns2:observation ;
+    ns1:cases 1373 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00813 a ns2:observation ;
+    ns1:cases 1248 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00814 a ns2:observation ;
+    ns1:cases 1749 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00815 a ns2:observation ;
+    ns1:cases 1700 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 13 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00816 a ns2:observation ;
+    ns1:cases 1783 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00817 a ns2:observation ;
+    ns1:cases 1462 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00818 a ns2:observation ;
+    ns1:cases 1279 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00819 a ns2:observation ;
+    ns1:cases 935 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0082 a ns2:observation ;
+    ns1:cases 1008 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00820 a ns2:observation ;
+    ns1:cases 1586 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00821 a ns2:observation ;
+    ns1:cases 1357 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00822 a ns2:observation ;
+    ns1:cases 1956 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00823 a ns2:observation ;
+    ns1:cases 1482 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00824 a ns2:observation ;
+    ns1:cases 1308 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00825 a ns2:observation ;
+    ns1:cases 1180 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00826 a ns2:observation ;
+    ns1:cases 1319 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00827 a ns2:observation ;
+    ns1:cases 1540 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00828 a ns2:observation ;
+    ns1:cases 1534 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00829 a ns2:observation ;
+    ns1:cases 1417 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0083 a ns2:observation ;
+    ns1:cases 1202 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00830 a ns2:observation ;
+    ns1:cases 1454 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00831 a ns2:observation ;
+    ns1:cases 1111 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00832 a ns2:observation ;
+    ns1:cases 66628 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 598 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0084 a ns2:observation ;
+    ns1:cases 584 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 19 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0085 a ns2:observation ;
+    ns1:cases 892 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0086 a ns2:observation ;
+    ns1:cases 1151 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 13 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0087 a ns2:observation ;
+    ns1:cases 1150 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0088 a ns2:observation ;
+    ns1:cases 1429 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 13 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0089 a ns2:observation ;
+    ns1:cases 1552 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0091 a ns2:observation ;
+    ns1:cases 607 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 18 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00910 a ns2:observation ;
+    ns1:cases 430 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00911 a ns2:observation ;
+    ns1:cases 520 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00912 a ns2:observation ;
+    ns1:cases 856 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00913 a ns2:observation ;
+    ns1:cases 770 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00914 a ns2:observation ;
+    ns1:cases 804 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00915 a ns2:observation ;
+    ns1:cases 842 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00916 a ns2:observation ;
+    ns1:cases 517 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00917 a ns2:observation ;
+    ns1:cases 465 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00918 a ns2:observation ;
+    ns1:cases 863 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00919 a ns2:observation ;
+    ns1:cases 691 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0092 a ns2:observation ;
+    ns1:cases 420 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00920 a ns2:observation ;
+    ns1:cases 706 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00921 a ns2:observation ;
+    ns1:cases 720 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00922 a ns2:observation ;
+    ns1:cases 779 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00923 a ns2:observation ;
+    ns1:cases 588 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00924 a ns2:observation ;
+    ns1:cases 459 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00925 a ns2:observation ;
+    ns1:cases 511 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00926 a ns2:observation ;
+    ns1:cases 648 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00927 a ns2:observation ;
+    ns1:cases 704 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00928 a ns2:observation ;
+    ns1:cases 758 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00929 a ns2:observation ;
+    ns1:cases 797 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0093 a ns2:observation ;
+    ns1:cases 422 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths -5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00930 a ns2:observation ;
+    ns1:cases 581 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00931 a ns2:observation ;
+    ns1:cases 392 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o00932 a ns2:observation ;
+    ns1:cases 57672 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 742 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0094 a ns2:observation ;
+    ns1:cases 458 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0095 a ns2:observation ;
+    ns1:cases 791 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0096 a ns2:observation ;
+    ns1:cases 512 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0097 a ns2:observation ;
+    ns1:cases 726 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0098 a ns2:observation ;
+    ns1:cases 803 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0099 a ns2:observation ;
+    ns1:cases 640 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0101 a ns2:observation ;
+    ns1:cases 59038 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 303 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01010 a ns2:observation ;
+    ns1:cases 15792 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 343 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01011 a ns2:observation ;
+    ns1:cases 30581 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 138 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01012 a ns2:observation ;
+    ns1:cases 35327 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 185 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01013 a ns2:observation ;
+    ns1:cases 35088 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 276 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01014 a ns2:observation ;
+    ns1:cases 34998 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 269 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01015 a ns2:observation ;
+    ns1:cases 38501 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 241 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01016 a ns2:observation ;
+    ns1:cases 29975 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 408 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01017 a ns2:observation ;
+    ns1:cases 6471 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 333 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01018 a ns2:observation ;
+    ns1:cases 26343 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 140 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01019 a ns2:observation ;
+    ns1:cases 29759 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 169 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0102 a ns2:observation ;
+    ns1:cases 30702 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 381 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01020 a ns2:observation ;
+    ns1:cases 25229 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 290 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01021 a ns2:observation ;
+    ns1:cases 27166 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 265 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01022 a ns2:observation ;
+    ns1:cases 30303 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 264 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01023 a ns2:observation ;
+    ns1:cases 23302 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 368 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01024 a ns2:observation ;
+    ns1:cases 5327 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 359 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01025 a ns2:observation ;
+    ns1:cases 21825 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 130 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01026 a ns2:observation ;
+    ns1:cases 23306 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 170 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01027 a ns2:observation ;
+    ns1:cases 23507 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 439 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01028 a ns2:observation ;
+    ns1:cases 25279 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 293 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01029 a ns2:observation ;
+    ns1:cases 26788 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 322 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0103 a ns2:observation ;
+    ns1:cases 9094 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 360 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01030 a ns2:observation ;
+    ns1:cases 22857 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 417 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01031 a ns2:observation ;
+    ns1:cases 4703 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 375 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01032 a ns2:observation ;
+    ns1:cases 3755968 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 86454 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0104 a ns2:observation ;
+    ns1:cases 37014 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 131 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0105 a ns2:observation ;
+    ns1:cases 42619 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 190 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0106 a ns2:observation ;
+    ns1:cases 41869 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 897 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0107 a ns2:observation ;
+    ns1:cases 45641 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 225 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0108 a ns2:observation ;
+    ns1:cases 65373 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 245 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0109 a ns2:observation ;
+    ns1:cases 14678 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 287 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0111 a ns2:observation ;
+    ns1:cases 24300 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 201 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01110 a ns2:observation ;
+    ns1:cases 7485 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 250 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01111 a ns2:observation ;
+    ns1:cases 7709 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 50 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01112 a ns2:observation ;
+    ns1:cases 13733 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 99 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01113 a ns2:observation ;
+    ns1:cases 16033 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 207 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01114 a ns2:observation ;
+    ns1:cases 17482 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 226 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01115 a ns2:observation ;
+    ns1:cases 17504 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 227 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01116 a ns2:observation ;
+    ns1:cases 13435 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 249 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01117 a ns2:observation ;
+    ns1:cases 5480 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 238 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01118 a ns2:observation ;
+    ns1:cases 6604 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 47 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01119 a ns2:observation ;
+    ns1:cases 10790 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 70 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0112 a ns2:observation ;
+    ns1:cases 17051 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 249 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01120 a ns2:observation ;
+    ns1:cases 12674 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 239 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01121 a ns2:observation ;
+    ns1:cases 12834 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 252 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01122 a ns2:observation ;
+    ns1:cases 14356 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 321 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01123 a ns2:observation ;
+    ns1:cases 9146 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 300 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01124 a ns2:observation ;
+    ns1:cases 4252 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 255 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01125 a ns2:observation ;
+    ns1:cases 5011 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 34 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01126 a ns2:observation ;
+    ns1:cases 8103 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 96 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01127 a ns2:observation ;
+    ns1:cases 9557 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 300 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01128 a ns2:observation ;
+    ns1:cases 10580 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 264 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01129 a ns2:observation ;
+    ns1:cases 11912 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 359 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0113 a ns2:observation ;
+    ns1:cases 9549 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 180 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01130 a ns2:observation ;
+    ns1:cases 9019 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 418 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01131 a ns2:observation ;
+    ns1:cases 3943 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 358 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01132 a ns2:observation ;
+    ns1:cases 2447068 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 70105 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0114 a ns2:observation ;
+    ns1:cases 9872 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 43 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0115 a ns2:observation ;
+    ns1:cases 17176 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 90 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0116 a ns2:observation ;
+    ns1:cases 20472 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 157 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0117 a ns2:observation ;
+    ns1:cases 21573 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 183 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0118 a ns2:observation ;
+    ns1:cases 22657 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 228 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0119 a ns2:observation ;
+    ns1:cases 15813 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 248 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0121 a ns2:observation ;
+    ns1:cases 3612 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 76 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01210 a ns2:observation ;
+    ns1:cases 1705 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 69 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01211 a ns2:observation ;
+    ns1:cases 2614 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 41 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01212 a ns2:observation ;
+    ns1:cases 1432 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 60 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01213 a ns2:observation ;
+    ns1:cases 2762 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 64 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01214 a ns2:observation ;
+    ns1:cases 3070 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 45 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01215 a ns2:observation ;
+    ns1:cases 3458 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 56 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01216 a ns2:observation ;
+    ns1:cases 1508 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 59 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01217 a ns2:observation ;
+    ns1:cases 1134 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 46 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01218 a ns2:observation ;
+    ns1:cases 1626 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 53 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01219 a ns2:observation ;
+    ns1:cases 2503 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 52 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0122 a ns2:observation ;
+    ns1:cases 4322 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 72 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01220 a ns2:observation ;
+    ns1:cases 2357 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 49 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01221 a ns2:observation ;
+    ns1:cases 2570 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 51 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01222 a ns2:observation ;
+    ns1:cases 2629 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 43 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01223 a ns2:observation ;
+    ns1:cases 3181 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 46 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01224 a ns2:observation ;
+    ns1:cases 1161 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 39 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01225 a ns2:observation ;
+    ns1:cases 1142 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 53 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01226 a ns2:observation ;
+    ns1:cases 2301 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 41 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01227 a ns2:observation ;
+    ns1:cases 2181 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 32 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01228 a ns2:observation ;
+    ns1:cases 2217 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 35 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01229 a ns2:observation ;
+    ns1:cases 2697 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 40 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0123 a ns2:observation ;
+    ns1:cases 1724 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 65 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01230 a ns2:observation ;
+    ns1:cases 2312 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 23 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01231 a ns2:observation ;
+    ns1:cases 1170 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 30 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01232 a ns2:observation ;
+    ns1:cases 191100 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 6504 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0124 a ns2:observation ;
+    ns1:cases 1441 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 54 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0125 a ns2:observation ;
+    ns1:cases 3132 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 72 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0126 a ns2:observation ;
+    ns1:cases 1466 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 53 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0127 a ns2:observation ;
+    ns1:cases 2587 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 52 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0128 a ns2:observation ;
+    ns1:cases 3058 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 67 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0129 a ns2:observation ;
+    ns1:cases 3517 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 51 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0131 a ns2:observation ;
+    ns1:cases 9288 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 258 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01310 a ns2:observation ;
+    ns1:cases 5481 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 252 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01311 a ns2:observation ;
+    ns1:cases 9046 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 189 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01312 a ns2:observation ;
+    ns1:cases 10625 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 194 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01313 a ns2:observation ;
+    ns1:cases 11132 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 227 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01314 a ns2:observation ;
+    ns1:cases 10759 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 213 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01315 a ns2:observation ;
+    ns1:cases 6502 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 207 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01316 a ns2:observation ;
+    ns1:cases 3456 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 195 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01317 a ns2:observation ;
+    ns1:cases 4926 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 143 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01318 a ns2:observation ;
+    ns1:cases 7706 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 131 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01319 a ns2:observation ;
+    ns1:cases 8863 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 162 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0132 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01320 a ns2:observation ;
+    ns1:cases 9444 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 163 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01321 a ns2:observation ;
+    ns1:cases 9011 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 130 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01322 a ns2:observation ;
+    ns1:cases 8312 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 172 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01323 a ns2:observation ;
+    ns1:cases 5653 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 179 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01324 a ns2:observation ;
+    ns1:cases 6494 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 158 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01325 a ns2:observation ;
+    ns1:cases 2696 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 115 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01326 a ns2:observation ;
+    ns1:cases 6201 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 108 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01327 a ns2:observation ;
+    ns1:cases 7269 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 146 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01328 a ns2:observation ;
+    ns1:cases 6369 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 143 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01329 a ns2:observation ;
+    ns1:cases 6278 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 152 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0133 a ns2:observation ;
+    ns1:cases 11309 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 576 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01330 a ns2:observation ;
+    ns1:cases 4211 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 136 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01331 a ns2:observation ;
+    ns1:cases 2764 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 130 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01332 a ns2:observation ;
+    ns1:cases 432925 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 15058 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0134 a ns2:observation ;
+    ns1:cases 7263 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 189 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0135 a ns2:observation ;
+    ns1:cases 9082 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 220 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0136 a ns2:observation ;
+    ns1:cases 10167 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 253 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0137 a ns2:observation ;
+    ns1:cases 11265 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 275 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0138 a ns2:observation ;
+    ns1:cases 9637 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 272 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0139 a ns2:observation ;
+    ns1:cases 7587 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 249 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0141 a ns2:observation ;
+    ns1:cases 11 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01410 a ns2:observation ;
+    ns1:cases 22 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01411 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01412 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01413 a ns2:observation ;
+    ns1:cases 6 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01414 a ns2:observation ;
+    ns1:cases 2 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01415 a ns2:observation ;
+    ns1:cases 2 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01416 a ns2:observation ;
+    ns1:cases 4 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01417 a ns2:observation ;
+    ns1:cases 11 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01418 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01419 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0142 a ns2:observation ;
+    ns1:cases 11 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01420 a ns2:observation ;
+    ns1:cases 2 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01421 a ns2:observation ;
+    ns1:cases 1 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01422 a ns2:observation ;
+    ns1:cases 2 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01423 a ns2:observation ;
+    ns1:cases 3 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01424 a ns2:observation ;
+    ns1:cases 5 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01425 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01426 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01427 a ns2:observation ;
+    ns1:cases 1 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01428 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01429 a ns2:observation ;
+    ns1:cases 3 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0143 a ns2:observation ;
+    ns1:cases 20 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01430 a ns2:observation ;
+    ns1:cases 1 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01431 a ns2:observation ;
+    ns1:cases 5 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01432 a ns2:observation ;
+    ns1:cases 6049 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 29 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0144 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0145 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0146 a ns2:observation ;
+    ns1:cases 5 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0147 a ns2:observation ;
+    ns1:cases 14 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0148 a ns2:observation ;
+    ns1:cases 22 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0149 a ns2:observation ;
+    ns1:cases 3 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0151 a ns2:observation ;
+    ns1:cases 410 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01510 a ns2:observation ;
+    ns1:cases 520 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01511 a ns2:observation ;
+    ns1:cases 768 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01512 a ns2:observation ;
+    ns1:cases 525 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01513 a ns2:observation ;
+    ns1:cases 510 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01514 a ns2:observation ;
+    ns1:cases 581 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01515 a ns2:observation ;
+    ns1:cases 552 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01516 a ns2:observation ;
+    ns1:cases 347 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 18 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01517 a ns2:observation ;
+    ns1:cases 575 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01518 a ns2:observation ;
+    ns1:cases 383 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01519 a ns2:observation ;
+    ns1:cases 538 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 16 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0152 a ns2:observation ;
+    ns1:cases 366 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01520 a ns2:observation ;
+    ns1:cases 641 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01521 a ns2:observation ;
+    ns1:cases 591 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01522 a ns2:observation ;
+    ns1:cases 631 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 47 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01523 a ns2:observation ;
+    ns1:cases 306 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 30 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01524 a ns2:observation ;
+    ns1:cases 432 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01525 a ns2:observation ;
+    ns1:cases 520 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01526 a ns2:observation ;
+    ns1:cases 530 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01527 a ns2:observation ;
+    ns1:cases 520 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01528 a ns2:observation ;
+    ns1:cases 460 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 39 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01529 a ns2:observation ;
+    ns1:cases 559 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0153 a ns2:observation ;
+    ns1:cases 537 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01530 a ns2:observation ;
+    ns1:cases 357 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01531 a ns2:observation ;
+    ns1:cases 681 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01532 a ns2:observation ;
+    ns1:cases 219592 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 4319 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0154 a ns2:observation ;
+    ns1:cases 604 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 13 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0155 a ns2:observation ;
+    ns1:cases 610 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0156 a ns2:observation ;
+    ns1:cases 569 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 20 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0157 a ns2:observation ;
+    ns1:cases 594 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0158 a ns2:observation ;
+    ns1:cases 680 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 18 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0159 a ns2:observation ;
+    ns1:cases 365 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 22 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0161 a ns2:observation ;
+    ns1:cases 23887 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 467 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01610 a ns2:observation ;
+    ns1:cases 24501 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 386 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01611 a ns2:observation ;
+    ns1:cases 20045 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 300 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01612 a ns2:observation ;
+    ns1:cases 23913 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 401 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01613 a ns2:observation ;
+    ns1:cases 25707 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 386 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01614 a ns2:observation ;
+    ns1:cases 24901 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 423 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01615 a ns2:observation ;
+    ns1:cases 23040 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 431 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01616 a ns2:observation ;
+    ns1:cases 20376 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 502 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01617 a ns2:observation ;
+    ns1:cases 15252 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 354 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01618 a ns2:observation ;
+    ns1:cases 21304 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 264 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01619 a ns2:observation ;
+    ns1:cases 26031 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 317 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0162 a ns2:observation ;
+    ns1:cases 16055 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 529 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01620 a ns2:observation ;
+    ns1:cases 26790 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 380 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01621 a ns2:observation ;
+    ns1:cases 25649 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 373 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01622 a ns2:observation ;
+    ns1:cases 22275 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 332 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01623 a ns2:observation ;
+    ns1:cases 19725 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 376 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01624 a ns2:observation ;
+    ns1:cases 13882 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 318 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01625 a ns2:observation ;
+    ns1:cases 20724 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 207 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01626 a ns2:observation ;
+    ns1:cases 23633 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 307 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01627 a ns2:observation ;
+    ns1:cases 24010 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 297 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01628 a ns2:observation ;
+    ns1:cases 22845 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 339 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01629 a ns2:observation ;
+    ns1:cases 20840 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 347 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0163 a ns2:observation ;
+    ns1:cases 12900 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 417 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01630 a ns2:observation ;
+    ns1:cases 17063 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 343 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01631 a ns2:observation ;
+    ns1:cases 13106 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 246 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01632 a ns2:observation ;
+    ns1:cases 2925265 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 97699 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0164 a ns2:observation ;
+    ns1:cases 19604 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 297 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0165 a ns2:observation ;
+    ns1:cases 23834 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 380 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0166 a ns2:observation ;
+    ns1:cases 24076 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 457 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0167 a ns2:observation ;
+    ns1:cases 23681 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 460 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0168 a ns2:observation ;
+    ns1:cases 21246 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 460 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0169 a ns2:observation ;
+    ns1:cases 18739 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 551 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0171 a ns2:observation ;
+    ns1:cases 630 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01710 a ns2:observation ;
+    ns1:cases 177 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01711 a ns2:observation ;
+    ns1:cases 260 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01712 a ns2:observation ;
+    ns1:cases 625 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01713 a ns2:observation ;
+    ns1:cases 622 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01714 a ns2:observation ;
+    ns1:cases 482 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01715 a ns2:observation ;
+    ns1:cases 818 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01716 a ns2:observation ;
+    ns1:cases 645 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01717 a ns2:observation ;
+    ns1:cases 176 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01718 a ns2:observation ;
+    ns1:cases 297 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01719 a ns2:observation ;
+    ns1:cases 578 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0172 a ns2:observation ;
+    ns1:cases 526 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01720 a ns2:observation ;
+    ns1:cases 632 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01721 a ns2:observation ;
+    ns1:cases 638 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01722 a ns2:observation ;
+    ns1:cases 639 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 21 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01723 a ns2:observation ;
+    ns1:cases 472 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01724 a ns2:observation ;
+    ns1:cases 194 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01725 a ns2:observation ;
+    ns1:cases 322 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01726 a ns2:observation ;
+    ns1:cases 595 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01727 a ns2:observation ;
+    ns1:cases 746 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01728 a ns2:observation ;
+    ns1:cases 646 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01729 a ns2:observation ;
+    ns1:cases 919 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 16 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0173 a ns2:observation ;
+    ns1:cases 167 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01730 a ns2:observation ;
+    ns1:cases 645 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01731 a ns2:observation ;
+    ns1:cases 272 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01732 a ns2:observation ;
+    ns1:cases 86186 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 1618 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0174 a ns2:observation ;
+    ns1:cases 324 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0175 a ns2:observation ;
+    ns1:cases 602 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0176 a ns2:observation ;
+    ns1:cases 638 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0177 a ns2:observation ;
+    ns1:cases 606 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 13 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0178 a ns2:observation ;
+    ns1:cases 776 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0179 a ns2:observation ;
+    ns1:cases 508 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0181 a ns2:observation ;
+    ns1:cases 5 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01810 a ns2:observation ;
+    ns1:cases 2 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01811 a ns2:observation ;
+    ns1:cases 4 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01812 a ns2:observation ;
+    ns1:cases 1 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01813 a ns2:observation ;
+    ns1:cases 5 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01814 a ns2:observation ;
+    ns1:cases 2 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01815 a ns2:observation ;
+    ns1:cases 4 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01816 a ns2:observation ;
+    ns1:cases 1 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01817 a ns2:observation ;
+    ns1:cases 3 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01818 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01819 a ns2:observation ;
+    ns1:cases 10 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0182 a ns2:observation ;
+    ns1:cases 6 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01820 a ns2:observation ;
+    ns1:cases 1 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01821 a ns2:observation ;
+    ns1:cases 5 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01822 a ns2:observation ;
+    ns1:cases 2 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01823 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01824 a ns2:observation ;
+    ns1:cases 2 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01825 a ns2:observation ;
+    ns1:cases 2 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01826 a ns2:observation ;
+    ns1:cases 1 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01827 a ns2:observation ;
+    ns1:cases 1 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01828 a ns2:observation ;
+    ns1:cases 6 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01829 a ns2:observation ;
+    ns1:cases 5 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0183 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01830 a ns2:observation ;
+    ns1:cases 1 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01831 a ns2:observation ;
+    ns1:cases 1 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01832 a ns2:observation ;
+    ns1:cases 2575 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 54 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0184 a ns2:observation ;
+    ns1:cases 6 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0185 a ns2:observation ;
+    ns1:cases 9 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0186 a ns2:observation ;
+    ns1:cases 4 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0187 a ns2:observation ;
+    ns1:cases 3 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0188 a ns2:observation ;
+    ns1:cases 6 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0189 a ns2:observation ;
+    ns1:cases 2 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0191 a ns2:observation ;
+    ns1:cases 903 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01910 a ns2:observation ;
+    ns1:cases 329 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01911 a ns2:observation ;
+    ns1:cases 361 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01912 a ns2:observation ;
+    ns1:cases 602 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01913 a ns2:observation ;
+    ns1:cases 579 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01914 a ns2:observation ;
+    ns1:cases 580 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01915 a ns2:observation ;
+    ns1:cases 599 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01916 a ns2:observation ;
+    ns1:cases 646 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01917 a ns2:observation ;
+    ns1:cases 259 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01918 a ns2:observation ;
+    ns1:cases 431 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01919 a ns2:observation ;
+    ns1:cases 598 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 16 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0192 a ns2:observation ;
+    ns1:cases 851 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01920 a ns2:observation ;
+    ns1:cases 364 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01921 a ns2:observation ;
+    ns1:cases 606 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01922 a ns2:observation ;
+    ns1:cases 486 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01923 a ns2:observation ;
+    ns1:cases 470 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01924 a ns2:observation ;
+    ns1:cases 216 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01925 a ns2:observation ;
+    ns1:cases 415 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01926 a ns2:observation ;
+    ns1:cases 464 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 18 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01927 a ns2:observation ;
+    ns1:cases 451 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01928 a ns2:observation ;
+    ns1:cases 533 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 13 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01929 a ns2:observation ;
+    ns1:cases 526 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 18 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0193 a ns2:observation ;
+    ns1:cases 424 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01930 a ns2:observation ;
+    ns1:cases 427 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01931 a ns2:observation ;
+    ns1:cases 2055 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o01932 a ns2:observation ;
+    ns1:cases 197343 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 3244 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0194 a ns2:observation ;
+    ns1:cases 494 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0195 a ns2:observation ;
+    ns1:cases 771 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0196 a ns2:observation ;
+    ns1:cases 872 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0197 a ns2:observation ;
+    ns1:cases 793 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0198 a ns2:observation ;
+    ns1:cases 803 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0199 a ns2:observation ;
+    ns1:cases 868 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0201 a ns2:observation ;
+    ns1:cases 387 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02010 a ns2:observation ;
+    ns1:cases 81 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02011 a ns2:observation ;
+    ns1:cases 461 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02012 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02013 a ns2:observation ;
+    ns1:cases 281 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02014 a ns2:observation ;
+    ns1:cases 266 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02015 a ns2:observation ;
+    ns1:cases 297 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02016 a ns2:observation ;
+    ns1:cases 185 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02017 a ns2:observation ;
+    ns1:cases 49 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02018 a ns2:observation ;
+    ns1:cases 177 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02019 a ns2:observation ;
+    ns1:cases 197 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0202 a ns2:observation ;
+    ns1:cases 182 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02020 a ns2:observation ;
+    ns1:cases 182 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02021 a ns2:observation ;
+    ns1:cases 265 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02022 a ns2:observation ;
+    ns1:cases 234 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02023 a ns2:observation ;
+    ns1:cases 145 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02024 a ns2:observation ;
+    ns1:cases 31 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02025 a ns2:observation ;
+    ns1:cases 140 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02026 a ns2:observation ;
+    ns1:cases 210 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02027 a ns2:observation ;
+    ns1:cases 186 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02028 a ns2:observation ;
+    ns1:cases 208 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02029 a ns2:observation ;
+    ns1:cases 270 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0203 a ns2:observation ;
+    ns1:cases 318 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02030 a ns2:observation ;
+    ns1:cases 152 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02031 a ns2:observation ;
+    ns1:cases 55 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02032 a ns2:observation ;
+    ns1:cases 55425 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 638 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0204 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0205 a ns2:observation ;
+    ns1:cases 290 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0206 a ns2:observation ;
+    ns1:cases 260 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0207 a ns2:observation ;
+    ns1:cases 298 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0208 a ns2:observation ;
+    ns1:cases 245 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0209 a ns2:observation ;
+    ns1:cases 165 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0211 a ns2:observation ;
+    ns1:cases 40 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02110 a ns2:observation ;
+    ns1:cases 191 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02111 a ns2:observation ;
+    ns1:cases 224 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02112 a ns2:observation ;
+    ns1:cases 55 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02113 a ns2:observation ;
+    ns1:cases 210 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02114 a ns2:observation ;
+    ns1:cases 179 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02115 a ns2:observation ;
+    ns1:cases 243 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02116 a ns2:observation ;
+    ns1:cases 211 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02117 a ns2:observation ;
+    ns1:cases 313 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02118 a ns2:observation ;
+    ns1:cases 213 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02119 a ns2:observation ;
+    ns1:cases 268 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0212 a ns2:observation ;
+    ns1:cases 55 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02120 a ns2:observation ;
+    ns1:cases 298 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02121 a ns2:observation ;
+    ns1:cases 329 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02122 a ns2:observation ;
+    ns1:cases 283 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02123 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02124 a ns2:observation ;
+    ns1:cases 501 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02125 a ns2:observation ;
+    ns1:cases 248 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02126 a ns2:observation ;
+    ns1:cases 201 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02127 a ns2:observation ;
+    ns1:cases 182 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02128 a ns2:observation ;
+    ns1:cases 345 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02129 a ns2:observation ;
+    ns1:cases 283 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0213 a ns2:observation ;
+    ns1:cases 63 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02130 a ns2:observation ;
+    ns1:cases 362 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02131 a ns2:observation ;
+    ns1:cases 233 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02132 a ns2:observation ;
+    ns1:cases 22947 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 315 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0214 a ns2:observation ;
+    ns1:cases 67 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0215 a ns2:observation ;
+    ns1:cases 93 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0216 a ns2:observation ;
+    ns1:cases 103 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0217 a ns2:observation ;
+    ns1:cases 102 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0218 a ns2:observation ;
+    ns1:cases 101 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0219 a ns2:observation ;
+    ns1:cases 90 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0221 a ns2:observation ;
+    ns1:cases 7623 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 29 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02210 a ns2:observation ;
+    ns1:cases 6257 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02211 a ns2:observation ;
+    ns1:cases 6953 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02212 a ns2:observation ;
+    ns1:cases 7577 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 16 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02213 a ns2:observation ;
+    ns1:cases 7371 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 46 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02214 a ns2:observation ;
+    ns1:cases 6115 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 33 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02215 a ns2:observation ;
+    ns1:cases 5918 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 46 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02216 a ns2:observation ;
+    ns1:cases 4893 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 32 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02217 a ns2:observation ;
+    ns1:cases 5465 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 18 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02218 a ns2:observation ;
+    ns1:cases 5967 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 22 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02219 a ns2:observation ;
+    ns1:cases 6390 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 22 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0222 a ns2:observation ;
+    ns1:cases 5820 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 34 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02220 a ns2:observation ;
+    ns1:cases 6020 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 26 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02221 a ns2:observation ;
+    ns1:cases 5319 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 50 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02222 a ns2:observation ;
+    ns1:cases 5255 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 31 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02223 a ns2:observation ;
+    ns1:cases 4297 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 56 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02224 a ns2:observation ;
+    ns1:cases 3832 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 28 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02225 a ns2:observation ;
+    ns1:cases 4522 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 30 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02226 a ns2:observation ;
+    ns1:cases 5329 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 41 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02227 a ns2:observation ;
+    ns1:cases 4668 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 32 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02228 a ns2:observation ;
+    ns1:cases 4110 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 33 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02229 a ns2:observation ;
+    ns1:cases 4991 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 48 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0223 a ns2:observation ;
+    ns1:cases 6702 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02230 a ns2:observation ;
+    ns1:cases 3976 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 65 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02231 a ns2:observation ;
+    ns1:cases 3753 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 21 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02232 a ns2:observation ;
+    ns1:cases 1087303 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 15544 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0224 a ns2:observation ;
+    ns1:cases 7421 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0225 a ns2:observation ;
+    ns1:cases 8792 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 29 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0226 a ns2:observation ;
+    ns1:cases 7553 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0227 a ns2:observation ;
+    ns1:cases 7688 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 26 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0228 a ns2:observation ;
+    ns1:cases 7574 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 32 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0229 a ns2:observation ;
+    ns1:cases 5550 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 49 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0231 a ns2:observation ;
+    ns1:cases 1070 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02310 a ns2:observation ;
+    ns1:cases 2386 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02311 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02312 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02313 a ns2:observation ;
+    ns1:cases 1034 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02314 a ns2:observation ;
+    ns1:cases 1064 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02315 a ns2:observation ;
+    ns1:cases 1154 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02316 a ns2:observation ;
+    ns1:cases 861 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02317 a ns2:observation ;
+    ns1:cases 2400 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02318 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02319 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0232 a ns2:observation ;
+    ns1:cases 993 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02320 a ns2:observation ;
+    ns1:cases 872 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02321 a ns2:observation ;
+    ns1:cases 684 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02322 a ns2:observation ;
+    ns1:cases 716 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02323 a ns2:observation ;
+    ns1:cases 828 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02324 a ns2:observation ;
+    ns1:cases 1447 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02325 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02326 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02327 a ns2:observation ;
+    ns1:cases 570 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02328 a ns2:observation ;
+    ns1:cases 690 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02329 a ns2:observation ;
+    ns1:cases 500 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0233 a ns2:observation ;
+    ns1:cases 2211 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02330 a ns2:observation ;
+    ns1:cases 731 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02331 a ns2:observation ;
+    ns1:cases 968 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02332 a ns2:observation ;
+    ns1:cases 70034 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 622 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0234 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0235 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0236 a ns2:observation ;
+    ns1:cases 833 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0237 a ns2:observation ;
+    ns1:cases 984 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0238 a ns2:observation ;
+    ns1:cases 1078 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0239 a ns2:observation ;
+    ns1:cases 1100 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0241 a ns2:observation ;
+    ns1:cases 32891 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 653 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02410 a ns2:observation ;
+    ns1:cases 14579 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 65 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02411 a ns2:observation ;
+    ns1:cases 21850 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 141 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02412 a ns2:observation ;
+    ns1:cases 26456 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 352 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02413 a ns2:observation ;
+    ns1:cases 25996 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 419 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02414 a ns2:observation ;
+    ns1:cases 27274 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 356 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02415 a ns2:observation ;
+    ns1:cases 25053 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 454 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02416 a ns2:observation ;
+    ns1:cases 14394 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 372 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02417 a ns2:observation ;
+    ns1:cases 10895 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 28 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02418 a ns2:observation ;
+    ns1:cases 17272 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 110 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02419 a ns2:observation ;
+    ns1:cases 21063 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 344 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0242 a ns2:observation ;
+    ns1:cases 20862 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 460 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02420 a ns2:observation ;
+    ns1:cases 18873 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 351 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02421 a ns2:observation ;
+    ns1:cases 21111 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 376 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02422 a ns2:observation ;
+    ns1:cases 17277 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 398 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02423 a ns2:observation ;
+    ns1:cases 9953 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 282 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02424 a ns2:observation ;
+    ns1:cases 6169 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 32 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02425 a ns2:observation ;
+    ns1:cases 13569 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 126 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02426 a ns2:observation ;
+    ns1:cases 14855 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 247 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02427 a ns2:observation ;
+    ns1:cases 15831 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 263 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02428 a ns2:observation ;
+    ns1:cases 15253 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 289 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02429 a ns2:observation ;
+    ns1:cases 15698 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 352 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0243 a ns2:observation ;
+    ns1:cases 16973 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 48 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02430 a ns2:observation ;
+    ns1:cases 7936 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 215 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02431 a ns2:observation ;
+    ns1:cases 4786 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 24 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02432 a ns2:observation ;
+    ns1:cases 1706986 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 43769 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0244 a ns2:observation ;
+    ns1:cases 29266 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 131 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0245 a ns2:observation ;
+    ns1:cases 31759 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 448 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0246 a ns2:observation ;
+    ns1:cases 35145 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 445 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0247 a ns2:observation ;
+    ns1:cases 34150 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 520 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0248 a ns2:observation ;
+    ns1:cases 30802 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 579 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0249 a ns2:observation ;
+    ns1:cases 16740 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 396 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0251 a ns2:observation ;
+    ns1:cases 618 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02510 a ns2:observation ;
+    ns1:cases 248 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 16 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02511 a ns2:observation ;
+    ns1:cases 450 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02512 a ns2:observation ;
+    ns1:cases 457 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02513 a ns2:observation ;
+    ns1:cases 568 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02514 a ns2:observation ;
+    ns1:cases 485 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 21 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02515 a ns2:observation ;
+    ns1:cases 673 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02516 a ns2:observation ;
+    ns1:cases 384 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 13 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02517 a ns2:observation ;
+    ns1:cases 256 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02518 a ns2:observation ;
+    ns1:cases 541 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02519 a ns2:observation ;
+    ns1:cases 564 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 19 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0252 a ns2:observation ;
+    ns1:cases 388 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02520 a ns2:observation ;
+    ns1:cases 577 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02521 a ns2:observation ;
+    ns1:cases 627 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 18 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02522 a ns2:observation ;
+    ns1:cases 642 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 22 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02523 a ns2:observation ;
+    ns1:cases 847 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 30 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02524 a ns2:observation ;
+    ns1:cases 365 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 25 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02525 a ns2:observation ;
+    ns1:cases 682 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 28 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02526 a ns2:observation ;
+    ns1:cases 1007 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 26 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02527 a ns2:observation ;
+    ns1:cases 949 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 28 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02528 a ns2:observation ;
+    ns1:cases 830 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 28 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02529 a ns2:observation ;
+    ns1:cases 979 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 41 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0253 a ns2:observation ;
+    ns1:cases 309 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02530 a ns2:observation ;
+    ns1:cases 691 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 38 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02531 a ns2:observation ;
+    ns1:cases 394 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 34 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02532 a ns2:observation ;
+    ns1:cases 804562 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 16317 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0254 a ns2:observation ;
+    ns1:cases 365 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0255 a ns2:observation ;
+    ns1:cases 344 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0256 a ns2:observation ;
+    ns1:cases 488 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0257 a ns2:observation ;
+    ns1:cases 423 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0258 a ns2:observation ;
+    ns1:cases 575 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0259 a ns2:observation ;
+    ns1:cases 434 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0261 a ns2:observation ;
+    ns1:cases 6156 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 129 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02610 a ns2:observation ;
+    ns1:cases 3743 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 60 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02611 a ns2:observation ;
+    ns1:cases 4267 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 76 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02612 a ns2:observation ;
+    ns1:cases 6096 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 112 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02613 a ns2:observation ;
+    ns1:cases 5593 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 143 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02614 a ns2:observation ;
+    ns1:cases 6174 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 90 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02615 a ns2:observation ;
+    ns1:cases 6186 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 89 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02616 a ns2:observation ;
+    ns1:cases 6118 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 133 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02617 a ns2:observation ;
+    ns1:cases 2972 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 82 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02618 a ns2:observation ;
+    ns1:cases 4383 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 44 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02619 a ns2:observation ;
+    ns1:cases 4964 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 79 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0262 a ns2:observation ;
+    ns1:cases 6204 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 175 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02620 a ns2:observation ;
+    ns1:cases 5010 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 108 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02621 a ns2:observation ;
+    ns1:cases 5236 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 96 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02622 a ns2:observation ;
+    ns1:cases 4564 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 100 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02623 a ns2:observation ;
+    ns1:cases 4989 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 93 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02624 a ns2:observation ;
+    ns1:cases 2280 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 63 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02625 a ns2:observation ;
+    ns1:cases 3288 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 46 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02626 a ns2:observation ;
+    ns1:cases 4064 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 69 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02627 a ns2:observation ;
+    ns1:cases 4342 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 101 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02628 a ns2:observation ;
+    ns1:cases 4271 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 98 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02629 a ns2:observation ;
+    ns1:cases 4278 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 77 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0263 a ns2:observation ;
+    ns1:cases 3825 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 120 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02630 a ns2:observation ;
+    ns1:cases 3950 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 106 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02631 a ns2:observation ;
+    ns1:cases 2096 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 53 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02632 a ns2:observation ;
+    ns1:cases 801994 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 20350 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0264 a ns2:observation ;
+    ns1:cases 4439 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 117 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0265 a ns2:observation ;
+    ns1:cases 5869 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 162 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0266 a ns2:observation ;
+    ns1:cases 6516 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 116 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0267 a ns2:observation ;
+    ns1:cases 6651 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 140 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0268 a ns2:observation ;
+    ns1:cases 6136 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 137 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0269 a ns2:observation ;
+    ns1:cases 6149 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 174 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0271 a ns2:observation ;
+    ns1:cases 1855 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 95 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02710 a ns2:observation ;
+    ns1:cases 401 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 60 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02711 a ns2:observation ;
+    ns1:cases 925 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 66 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02712 a ns2:observation ;
+    ns1:cases 1795 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 84 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02713 a ns2:observation ;
+    ns1:cases 1679 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 80 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02714 a ns2:observation ;
+    ns1:cases 2040 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 76 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02715 a ns2:observation ;
+    ns1:cases 2892 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 69 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02716 a ns2:observation ;
+    ns1:cases 1578 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 64 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02717 a ns2:observation ;
+    ns1:cases 457 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 77 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02718 a ns2:observation ;
+    ns1:cases 1269 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 88 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02719 a ns2:observation ;
+    ns1:cases 2362 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 94 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0272 a ns2:observation ;
+    ns1:cases 1215 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 82 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02720 a ns2:observation ;
+    ns1:cases 2301 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 102 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02721 a ns2:observation ;
+    ns1:cases 1978 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 98 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02722 a ns2:observation ;
+    ns1:cases 3600 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 109 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02723 a ns2:observation ;
+    ns1:cases 2207 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 116 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02724 a ns2:observation ;
+    ns1:cases 396 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 85 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02725 a ns2:observation ;
+    ns1:cases 1286 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 97 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02726 a ns2:observation ;
+    ns1:cases 2522 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 74 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02727 a ns2:observation ;
+    ns1:cases 2423 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 105 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02728 a ns2:observation ;
+    ns1:cases 2800 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 71 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02729 a ns2:observation ;
+    ns1:cases 3357 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 101 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0273 a ns2:observation ;
+    ns1:cases 205 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 46 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02730 a ns2:observation ;
+    ns1:cases 2077 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 118 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02731 a ns2:observation ;
+    ns1:cases 842 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 81 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02732 a ns2:observation ;
+    ns1:cases 308083 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 7189 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0274 a ns2:observation ;
+    ns1:cases 925 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 70 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0275 a ns2:observation ;
+    ns1:cases 1531 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 53 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0276 a ns2:observation ;
+    ns1:cases 1272 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 60 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0277 a ns2:observation ;
+    ns1:cases 1654 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 52 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0278 a ns2:observation ;
+    ns1:cases 1977 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 71 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0279 a ns2:observation ;
+    ns1:cases 1281 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 86 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0281 a ns2:observation ;
+    ns1:cases 1560 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02810 a ns2:observation ;
+    ns1:cases 290 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02811 a ns2:observation ;
+    ns1:cases 517 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02812 a ns2:observation ;
+    ns1:cases 1031 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 7 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02813 a ns2:observation ;
+    ns1:cases 934 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02814 a ns2:observation ;
+    ns1:cases 973 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02815 a ns2:observation ;
+    ns1:cases 1111 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02816 a ns2:observation ;
+    ns1:cases 882 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02817 a ns2:observation ;
+    ns1:cases 204 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02818 a ns2:observation ;
+    ns1:cases 521 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02819 a ns2:observation ;
+    ns1:cases 852 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0282 a ns2:observation ;
+    ns1:cases 1079 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02820 a ns2:observation ;
+    ns1:cases 768 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02821 a ns2:observation ;
+    ns1:cases 860 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02822 a ns2:observation ;
+    ns1:cases 952 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02823 a ns2:observation ;
+    ns1:cases 741 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02824 a ns2:observation ;
+    ns1:cases 213 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02825 a ns2:observation ;
+    ns1:cases 382 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 28 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02826 a ns2:observation ;
+    ns1:cases 921 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02827 a ns2:observation ;
+    ns1:cases 884 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02828 a ns2:observation ;
+    ns1:cases 1015 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 13 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02829 a ns2:observation ;
+    ns1:cases 1210 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0283 a ns2:observation ;
+    ns1:cases 286 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 1 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02830 a ns2:observation ;
+    ns1:cases 732 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02831 a ns2:observation ;
+    ns1:cases 243 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02832 a ns2:observation ;
+    ns1:cases 190081 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 4111 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0284 a ns2:observation ;
+    ns1:cases 641 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0285 a ns2:observation ;
+    ns1:cases 1251 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 11 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0286 a ns2:observation ;
+    ns1:cases 1034 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0287 a ns2:observation ;
+    ns1:cases 1164 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0288 a ns2:observation ;
+    ns1:cases 1289 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0289 a ns2:observation ;
+    ns1:cases 983 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0291 a ns2:observation ;
+    ns1:cases 8534 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 154 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02910 a ns2:observation ;
+    ns1:cases 16471 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 633 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02911 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02912 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02913 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02914 a ns2:observation ;
+    ns1:cases 6216 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 117 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02915 a ns2:observation ;
+    ns1:cases 6092 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 228 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02916 a ns2:observation ;
+    ns1:cases 4962 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 141 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02917 a ns2:observation ;
+    ns1:cases 11358 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 166 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02918 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02919 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0292 a ns2:observation ;
+    ns1:cases 4994 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 106 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02920 a ns2:observation ;
+    ns1:cases 5348 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 173 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02921 a ns2:observation ;
+    ns1:cases 6255 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 124 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02922 a ns2:observation ;
+    ns1:cases 7163 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 234 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02923 a ns2:observation ;
+    ns1:cases 3968 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 291 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02924 a ns2:observation ;
+    ns1:cases 11958 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 298 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02925 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02926 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02927 a ns2:observation ;
+    ns1:cases 6654 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 637 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02928 a ns2:observation ;
+    ns1:cases 6037 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 254 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02929 a ns2:observation ;
+    ns1:cases 6137 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 446 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0293 a ns2:observation ;
+    ns1:cases 15501 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 189 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02930 a ns2:observation ;
+    ns1:cases 4517 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 192 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02931 a ns2:observation ;
+    ns1:cases 15978 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 467 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o02932 a ns2:observation ;
+    ns1:cases 3109689 ;
+    ns1:dateRep "28/02/2021"^^xsd:string ;
+    ns1:deaths 69142 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0294 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0295 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0296 a ns2:observation ;
+    ns1:cases 7586 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 590 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0297 a ns2:observation ;
+    ns1:cases 6393 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 356 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0298 a ns2:observation ;
+    ns1:cases 7026 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 320 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0299 a ns2:observation ;
+    ns1:cases 5516 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 201 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0301 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "01/04/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03010 a ns2:observation ;
+    ns1:cases 7655 ;
+    ns1:dateRep "23/03/2021"^^xsd:string ;
+    ns1:deaths 5 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03011 a ns2:observation ;
+    ns1:cases 2690 ;
+    ns1:dateRep "22/03/2021"^^xsd:string ;
+    ns1:deaths 10 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03012 a ns2:observation ;
+    ns1:cases 1580 ;
+    ns1:dateRep "21/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03013 a ns2:observation ;
+    ns1:cases 4380 ;
+    ns1:dateRep "20/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03014 a ns2:observation ;
+    ns1:cases 5406 ;
+    ns1:dateRep "19/03/2021"^^xsd:string ;
+    ns1:deaths 21 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03015 a ns2:observation ;
+    ns1:cases 5741 ;
+    ns1:dateRep "18/03/2021"^^xsd:string ;
+    ns1:deaths 9 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03016 a ns2:observation ;
+    ns1:cases 6434 ;
+    ns1:dateRep "17/03/2021"^^xsd:string ;
+    ns1:deaths 13 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03017 a ns2:observation ;
+    ns1:cases 6786 ;
+    ns1:dateRep "16/03/2021"^^xsd:string ;
+    ns1:deaths 16 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03018 a ns2:observation ;
+    ns1:cases 2717 ;
+    ns1:dateRep "15/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03019 a ns2:observation ;
+    ns1:cases 1042 ;
+    ns1:dateRep "14/03/2021"^^xsd:string ;
+    ns1:deaths 19 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0302 a ns2:observation ;
+    ns1:cases 0 ;
+    ns1:dateRep "31/03/2021"^^xsd:string ;
+    ns1:deaths 0 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03020 a ns2:observation ;
+    ns1:cases 3954 ;
+    ns1:dateRep "13/03/2021"^^xsd:string ;
+    ns1:deaths 20 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03021 a ns2:observation ;
+    ns1:cases 4996 ;
+    ns1:dateRep "12/03/2021"^^xsd:string ;
+    ns1:deaths 18 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03022 a ns2:observation ;
+    ns1:cases 5334 ;
+    ns1:dateRep "11/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03023 a ns2:observation ;
+    ns1:cases 5331 ;
+    ns1:dateRep "10/03/2021"^^xsd:string ;
+    ns1:deaths 15 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03024 a ns2:observation ;
+    ns1:cases 5928 ;
+    ns1:dateRep "09/03/2021"^^xsd:string ;
+    ns1:deaths 20 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03025 a ns2:observation ;
+    ns1:cases 1984 ;
+    ns1:dateRep "08/03/2021"^^xsd:string ;
+    ns1:deaths 20 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03026 a ns2:observation ;
+    ns1:cases 1451 ;
+    ns1:dateRep "07/03/2021"^^xsd:string ;
+    ns1:deaths 23 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03027 a ns2:observation ;
+    ns1:cases 3455 ;
+    ns1:dateRep "06/03/2021"^^xsd:string ;
+    ns1:deaths 17 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03028 a ns2:observation ;
+    ns1:cases 4070 ;
+    ns1:dateRep "05/03/2021"^^xsd:string ;
+    ns1:deaths 12 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03029 a ns2:observation ;
+    ns1:cases 4883 ;
+    ns1:dateRep "04/03/2021"^^xsd:string ;
+    ns1:deaths 14 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0303 a ns2:observation ;
+    ns1:cases 8447 ;
+    ns1:dateRep "30/03/2021"^^xsd:string ;
+    ns1:deaths 32 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03030 a ns2:observation ;
+    ns1:cases 4878 ;
+    ns1:dateRep "03/03/2021"^^xsd:string ;
+    ns1:deaths 19 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03031 a ns2:observation ;
+    ns1:cases 6191 ;
+    ns1:dateRep "02/03/2021"^^xsd:string ;
+    ns1:deaths 19 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o03032 a ns2:observation ;
+    ns1:cases 669010 ;
+    ns1:dateRep "01/03/2021"^^xsd:string ;
+    ns1:deaths 13060 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0304 a ns2:observation ;
+    ns1:cases 2976 ;
+    ns1:dateRep "29/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0305 a ns2:observation ;
+    ns1:cases 1983 ;
+    ns1:dateRep "28/03/2021"^^xsd:string ;
+    ns1:deaths 6 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0306 a ns2:observation ;
+    ns1:cases 5200 ;
+    ns1:dateRep "27/03/2021"^^xsd:string ;
+    ns1:deaths 2 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0307 a ns2:observation ;
+    ns1:cases 6300 ;
+    ns1:dateRep "26/03/2021"^^xsd:string ;
+    ns1:deaths 4 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0308 a ns2:observation ;
+    ns1:cases 6372 ;
+    ns1:dateRep "25/03/2021"^^xsd:string ;
+    ns1:deaths 3 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:o0309 a ns2:observation ;
+    ns1:cases 7712 ;
+    ns1:dateRep "24/03/2021"^^xsd:string ;
+    ns1:deaths 8 ;
+    ns2:dataset ns1:dataset1 .
+
+ns1:slice1 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:AUT ;
+    ns3:geoId ns3:AT ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Austria ;
+    ns1:popData2020 8901064 ;
+    ns2:observation ns1:o0011,
+        ns1:o00110,
+        ns1:o00111,
+        ns1:o00112,
+        ns1:o00113,
+        ns1:o00114,
+        ns1:o00115,
+        ns1:o00116,
+        ns1:o00117,
+        ns1:o00118,
+        ns1:o00119,
+        ns1:o0012,
+        ns1:o00120,
+        ns1:o00121,
+        ns1:o00122,
+        ns1:o00123,
+        ns1:o00124,
+        ns1:o00125,
+        ns1:o00126,
+        ns1:o00127,
+        ns1:o00128,
+        ns1:o00129,
+        ns1:o0013,
+        ns1:o00130,
+        ns1:o00131,
+        ns1:o00132,
+        ns1:o0014,
+        ns1:o0015,
+        ns1:o0016,
+        ns1:o0017,
+        ns1:o0018,
+        ns1:o0019 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice10 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:FRA ;
+    ns3:geoId ns3:FR ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:France ;
+    ns1:popData2020 67320216 ;
+    ns2:observation ns1:o0101,
+        ns1:o01010,
+        ns1:o01011,
+        ns1:o01012,
+        ns1:o01013,
+        ns1:o01014,
+        ns1:o01015,
+        ns1:o01016,
+        ns1:o01017,
+        ns1:o01018,
+        ns1:o01019,
+        ns1:o0102,
+        ns1:o01020,
+        ns1:o01021,
+        ns1:o01022,
+        ns1:o01023,
+        ns1:o01024,
+        ns1:o01025,
+        ns1:o01026,
+        ns1:o01027,
+        ns1:o01028,
+        ns1:o01029,
+        ns1:o0103,
+        ns1:o01030,
+        ns1:o01031,
+        ns1:o01032,
+        ns1:o0104,
+        ns1:o0105,
+        ns1:o0106,
+        ns1:o0107,
+        ns1:o0108,
+        ns1:o0109 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice11 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:DEU ;
+    ns3:geoId ns3:DE ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Germany ;
+    ns1:popData2020 83166711 ;
+    ns2:observation ns1:o0111,
+        ns1:o01110,
+        ns1:o01111,
+        ns1:o01112,
+        ns1:o01113,
+        ns1:o01114,
+        ns1:o01115,
+        ns1:o01116,
+        ns1:o01117,
+        ns1:o01118,
+        ns1:o01119,
+        ns1:o0112,
+        ns1:o01120,
+        ns1:o01121,
+        ns1:o01122,
+        ns1:o01123,
+        ns1:o01124,
+        ns1:o01125,
+        ns1:o01126,
+        ns1:o01127,
+        ns1:o01128,
+        ns1:o01129,
+        ns1:o0113,
+        ns1:o01130,
+        ns1:o01131,
+        ns1:o01132,
+        ns1:o0114,
+        ns1:o0115,
+        ns1:o0116,
+        ns1:o0117,
+        ns1:o0118,
+        ns1:o0119 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice12 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:GRC ;
+    ns3:geoId ns3:EL ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Greece ;
+    ns1:popData2020 10718565 ;
+    ns2:observation ns1:o0121,
+        ns1:o01210,
+        ns1:o01211,
+        ns1:o01212,
+        ns1:o01213,
+        ns1:o01214,
+        ns1:o01215,
+        ns1:o01216,
+        ns1:o01217,
+        ns1:o01218,
+        ns1:o01219,
+        ns1:o0122,
+        ns1:o01220,
+        ns1:o01221,
+        ns1:o01222,
+        ns1:o01223,
+        ns1:o01224,
+        ns1:o01225,
+        ns1:o01226,
+        ns1:o01227,
+        ns1:o01228,
+        ns1:o01229,
+        ns1:o0123,
+        ns1:o01230,
+        ns1:o01231,
+        ns1:o01232,
+        ns1:o0124,
+        ns1:o0125,
+        ns1:o0126,
+        ns1:o0127,
+        ns1:o0128,
+        ns1:o0129 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice13 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:HUN ;
+    ns3:geoId ns3:HU ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Hungary ;
+    ns1:popData2020 9769526 ;
+    ns2:observation ns1:o0131,
+        ns1:o01310,
+        ns1:o01311,
+        ns1:o01312,
+        ns1:o01313,
+        ns1:o01314,
+        ns1:o01315,
+        ns1:o01316,
+        ns1:o01317,
+        ns1:o01318,
+        ns1:o01319,
+        ns1:o0132,
+        ns1:o01320,
+        ns1:o01321,
+        ns1:o01322,
+        ns1:o01323,
+        ns1:o01324,
+        ns1:o01325,
+        ns1:o01326,
+        ns1:o01327,
+        ns1:o01328,
+        ns1:o01329,
+        ns1:o0133,
+        ns1:o01330,
+        ns1:o01331,
+        ns1:o01332,
+        ns1:o0134,
+        ns1:o0135,
+        ns1:o0136,
+        ns1:o0137,
+        ns1:o0138,
+        ns1:o0139 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice14 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:ISL ;
+    ns3:geoId ns3:IS ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Iceland ;
+    ns1:popData2020 364134 ;
+    ns2:observation ns1:o0141,
+        ns1:o01410,
+        ns1:o01411,
+        ns1:o01412,
+        ns1:o01413,
+        ns1:o01414,
+        ns1:o01415,
+        ns1:o01416,
+        ns1:o01417,
+        ns1:o01418,
+        ns1:o01419,
+        ns1:o0142,
+        ns1:o01420,
+        ns1:o01421,
+        ns1:o01422,
+        ns1:o01423,
+        ns1:o01424,
+        ns1:o01425,
+        ns1:o01426,
+        ns1:o01427,
+        ns1:o01428,
+        ns1:o01429,
+        ns1:o0143,
+        ns1:o01430,
+        ns1:o01431,
+        ns1:o01432,
+        ns1:o0144,
+        ns1:o0145,
+        ns1:o0146,
+        ns1:o0147,
+        ns1:o0148,
+        ns1:o0149 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice15 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:IRL ;
+    ns3:geoId ns3:IE ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Ireland ;
+    ns1:popData2020 4964440 ;
+    ns2:observation ns1:o0151,
+        ns1:o01510,
+        ns1:o01511,
+        ns1:o01512,
+        ns1:o01513,
+        ns1:o01514,
+        ns1:o01515,
+        ns1:o01516,
+        ns1:o01517,
+        ns1:o01518,
+        ns1:o01519,
+        ns1:o0152,
+        ns1:o01520,
+        ns1:o01521,
+        ns1:o01522,
+        ns1:o01523,
+        ns1:o01524,
+        ns1:o01525,
+        ns1:o01526,
+        ns1:o01527,
+        ns1:o01528,
+        ns1:o01529,
+        ns1:o0153,
+        ns1:o01530,
+        ns1:o01531,
+        ns1:o01532,
+        ns1:o0154,
+        ns1:o0155,
+        ns1:o0156,
+        ns1:o0157,
+        ns1:o0158,
+        ns1:o0159 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice16 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:ITA ;
+    ns3:geoId ns3:IT ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Italy ;
+    ns1:popData2020 59641488 ;
+    ns2:observation ns1:o0161,
+        ns1:o01610,
+        ns1:o01611,
+        ns1:o01612,
+        ns1:o01613,
+        ns1:o01614,
+        ns1:o01615,
+        ns1:o01616,
+        ns1:o01617,
+        ns1:o01618,
+        ns1:o01619,
+        ns1:o0162,
+        ns1:o01620,
+        ns1:o01621,
+        ns1:o01622,
+        ns1:o01623,
+        ns1:o01624,
+        ns1:o01625,
+        ns1:o01626,
+        ns1:o01627,
+        ns1:o01628,
+        ns1:o01629,
+        ns1:o0163,
+        ns1:o01630,
+        ns1:o01631,
+        ns1:o01632,
+        ns1:o0164,
+        ns1:o0165,
+        ns1:o0166,
+        ns1:o0167,
+        ns1:o0168,
+        ns1:o0169 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice17 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:LVA ;
+    ns3:geoId ns3:LV ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Latvia ;
+    ns1:popData2020 1907675 ;
+    ns2:observation ns1:o0171,
+        ns1:o01710,
+        ns1:o01711,
+        ns1:o01712,
+        ns1:o01713,
+        ns1:o01714,
+        ns1:o01715,
+        ns1:o01716,
+        ns1:o01717,
+        ns1:o01718,
+        ns1:o01719,
+        ns1:o0172,
+        ns1:o01720,
+        ns1:o01721,
+        ns1:o01722,
+        ns1:o01723,
+        ns1:o01724,
+        ns1:o01725,
+        ns1:o01726,
+        ns1:o01727,
+        ns1:o01728,
+        ns1:o01729,
+        ns1:o0173,
+        ns1:o01730,
+        ns1:o01731,
+        ns1:o01732,
+        ns1:o0174,
+        ns1:o0175,
+        ns1:o0176,
+        ns1:o0177,
+        ns1:o0178,
+        ns1:o0179 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice18 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:LIE ;
+    ns3:geoId ns3:LI ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Liechtenstein ;
+    ns1:popData2020 38747 ;
+    ns2:observation ns1:o0181,
+        ns1:o01810,
+        ns1:o01811,
+        ns1:o01812,
+        ns1:o01813,
+        ns1:o01814,
+        ns1:o01815,
+        ns1:o01816,
+        ns1:o01817,
+        ns1:o01818,
+        ns1:o01819,
+        ns1:o0182,
+        ns1:o01820,
+        ns1:o01821,
+        ns1:o01822,
+        ns1:o01823,
+        ns1:o01824,
+        ns1:o01825,
+        ns1:o01826,
+        ns1:o01827,
+        ns1:o01828,
+        ns1:o01829,
+        ns1:o0183,
+        ns1:o01830,
+        ns1:o01831,
+        ns1:o01832,
+        ns1:o0184,
+        ns1:o0185,
+        ns1:o0186,
+        ns1:o0187,
+        ns1:o0188,
+        ns1:o0189 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice19 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:LTU ;
+    ns3:geoId ns3:LT ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Lithuania ;
+    ns1:popData2020 2794090 ;
+    ns2:observation ns1:o0191,
+        ns1:o01910,
+        ns1:o01911,
+        ns1:o01912,
+        ns1:o01913,
+        ns1:o01914,
+        ns1:o01915,
+        ns1:o01916,
+        ns1:o01917,
+        ns1:o01918,
+        ns1:o01919,
+        ns1:o0192,
+        ns1:o01920,
+        ns1:o01921,
+        ns1:o01922,
+        ns1:o01923,
+        ns1:o01924,
+        ns1:o01925,
+        ns1:o01926,
+        ns1:o01927,
+        ns1:o01928,
+        ns1:o01929,
+        ns1:o0193,
+        ns1:o01930,
+        ns1:o01931,
+        ns1:o01932,
+        ns1:o0194,
+        ns1:o0195,
+        ns1:o0196,
+        ns1:o0197,
+        ns1:o0198,
+        ns1:o0199 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice2 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:BEL ;
+    ns3:geoId ns3:BE ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Belgium ;
+    ns1:popData2020 11522440 ;
+    ns2:observation ns1:o0021,
+        ns1:o00210,
+        ns1:o00211,
+        ns1:o00212,
+        ns1:o00213,
+        ns1:o00214,
+        ns1:o00215,
+        ns1:o00216,
+        ns1:o00217,
+        ns1:o00218,
+        ns1:o00219,
+        ns1:o0022,
+        ns1:o00220,
+        ns1:o00221,
+        ns1:o00222,
+        ns1:o00223,
+        ns1:o00224,
+        ns1:o00225,
+        ns1:o00226,
+        ns1:o00227,
+        ns1:o00228,
+        ns1:o00229,
+        ns1:o0023,
+        ns1:o00230,
+        ns1:o00231,
+        ns1:o00232,
+        ns1:o0024,
+        ns1:o0025,
+        ns1:o0026,
+        ns1:o0027,
+        ns1:o0028,
+        ns1:o0029 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice20 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:LUX ;
+    ns3:geoId ns3:LU ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Luxembourg ;
+    ns1:popData2020 626108 ;
+    ns2:observation ns1:o0201,
+        ns1:o02010,
+        ns1:o02011,
+        ns1:o02012,
+        ns1:o02013,
+        ns1:o02014,
+        ns1:o02015,
+        ns1:o02016,
+        ns1:o02017,
+        ns1:o02018,
+        ns1:o02019,
+        ns1:o0202,
+        ns1:o02020,
+        ns1:o02021,
+        ns1:o02022,
+        ns1:o02023,
+        ns1:o02024,
+        ns1:o02025,
+        ns1:o02026,
+        ns1:o02027,
+        ns1:o02028,
+        ns1:o02029,
+        ns1:o0203,
+        ns1:o02030,
+        ns1:o02031,
+        ns1:o02032,
+        ns1:o0204,
+        ns1:o0205,
+        ns1:o0206,
+        ns1:o0207,
+        ns1:o0208,
+        ns1:o0209 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice21 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:MLT ;
+    ns3:geoId ns3:MT ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Malta ;
+    ns1:popData2020 514564 ;
+    ns2:observation ns1:o0211,
+        ns1:o02110,
+        ns1:o02111,
+        ns1:o02112,
+        ns1:o02113,
+        ns1:o02114,
+        ns1:o02115,
+        ns1:o02116,
+        ns1:o02117,
+        ns1:o02118,
+        ns1:o02119,
+        ns1:o0212,
+        ns1:o02120,
+        ns1:o02121,
+        ns1:o02122,
+        ns1:o02123,
+        ns1:o02124,
+        ns1:o02125,
+        ns1:o02126,
+        ns1:o02127,
+        ns1:o02128,
+        ns1:o02129,
+        ns1:o0213,
+        ns1:o02130,
+        ns1:o02131,
+        ns1:o02132,
+        ns1:o0214,
+        ns1:o0215,
+        ns1:o0216,
+        ns1:o0217,
+        ns1:o0218,
+        ns1:o0219 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice22 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:NLD ;
+    ns3:geoId ns3:NL ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Netherlands ;
+    ns1:popData2020 17407585 ;
+    ns2:observation ns1:o0221,
+        ns1:o02210,
+        ns1:o02211,
+        ns1:o02212,
+        ns1:o02213,
+        ns1:o02214,
+        ns1:o02215,
+        ns1:o02216,
+        ns1:o02217,
+        ns1:o02218,
+        ns1:o02219,
+        ns1:o0222,
+        ns1:o02220,
+        ns1:o02221,
+        ns1:o02222,
+        ns1:o02223,
+        ns1:o02224,
+        ns1:o02225,
+        ns1:o02226,
+        ns1:o02227,
+        ns1:o02228,
+        ns1:o02229,
+        ns1:o0223,
+        ns1:o02230,
+        ns1:o02231,
+        ns1:o02232,
+        ns1:o0224,
+        ns1:o0225,
+        ns1:o0226,
+        ns1:o0227,
+        ns1:o0228,
+        ns1:o0229 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice23 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:NOR ;
+    ns3:geoId ns3:NO ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Norway ;
+    ns1:popData2020 5367580 ;
+    ns2:observation ns1:o0231,
+        ns1:o02310,
+        ns1:o02311,
+        ns1:o02312,
+        ns1:o02313,
+        ns1:o02314,
+        ns1:o02315,
+        ns1:o02316,
+        ns1:o02317,
+        ns1:o02318,
+        ns1:o02319,
+        ns1:o0232,
+        ns1:o02320,
+        ns1:o02321,
+        ns1:o02322,
+        ns1:o02323,
+        ns1:o02324,
+        ns1:o02325,
+        ns1:o02326,
+        ns1:o02327,
+        ns1:o02328,
+        ns1:o02329,
+        ns1:o0233,
+        ns1:o02330,
+        ns1:o02331,
+        ns1:o02332,
+        ns1:o0234,
+        ns1:o0235,
+        ns1:o0236,
+        ns1:o0237,
+        ns1:o0238,
+        ns1:o0239 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice24 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:POL ;
+    ns3:geoId ns3:PL ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Poland ;
+    ns1:popData2020 37958138 ;
+    ns2:observation ns1:o0241,
+        ns1:o02410,
+        ns1:o02411,
+        ns1:o02412,
+        ns1:o02413,
+        ns1:o02414,
+        ns1:o02415,
+        ns1:o02416,
+        ns1:o02417,
+        ns1:o02418,
+        ns1:o02419,
+        ns1:o0242,
+        ns1:o02420,
+        ns1:o02421,
+        ns1:o02422,
+        ns1:o02423,
+        ns1:o02424,
+        ns1:o02425,
+        ns1:o02426,
+        ns1:o02427,
+        ns1:o02428,
+        ns1:o02429,
+        ns1:o0243,
+        ns1:o02430,
+        ns1:o02431,
+        ns1:o02432,
+        ns1:o0244,
+        ns1:o0245,
+        ns1:o0246,
+        ns1:o0247,
+        ns1:o0248,
+        ns1:o0249 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice25 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:PRT ;
+    ns3:geoId ns3:PT ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Portugal ;
+    ns1:popData2020 10295909 ;
+    ns2:observation ns1:o0251,
+        ns1:o02510,
+        ns1:o02511,
+        ns1:o02512,
+        ns1:o02513,
+        ns1:o02514,
+        ns1:o02515,
+        ns1:o02516,
+        ns1:o02517,
+        ns1:o02518,
+        ns1:o02519,
+        ns1:o0252,
+        ns1:o02520,
+        ns1:o02521,
+        ns1:o02522,
+        ns1:o02523,
+        ns1:o02524,
+        ns1:o02525,
+        ns1:o02526,
+        ns1:o02527,
+        ns1:o02528,
+        ns1:o02529,
+        ns1:o0253,
+        ns1:o02530,
+        ns1:o02531,
+        ns1:o02532,
+        ns1:o0254,
+        ns1:o0255,
+        ns1:o0256,
+        ns1:o0257,
+        ns1:o0258,
+        ns1:o0259 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice26 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:ROU ;
+    ns3:geoId ns3:RO ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Romania ;
+    ns1:popData2020 19328838 ;
+    ns2:observation ns1:o0261,
+        ns1:o02610,
+        ns1:o02611,
+        ns1:o02612,
+        ns1:o02613,
+        ns1:o02614,
+        ns1:o02615,
+        ns1:o02616,
+        ns1:o02617,
+        ns1:o02618,
+        ns1:o02619,
+        ns1:o0262,
+        ns1:o02620,
+        ns1:o02621,
+        ns1:o02622,
+        ns1:o02623,
+        ns1:o02624,
+        ns1:o02625,
+        ns1:o02626,
+        ns1:o02627,
+        ns1:o02628,
+        ns1:o02629,
+        ns1:o0263,
+        ns1:o02630,
+        ns1:o02631,
+        ns1:o02632,
+        ns1:o0264,
+        ns1:o0265,
+        ns1:o0266,
+        ns1:o0267,
+        ns1:o0268,
+        ns1:o0269 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice27 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:SVK ;
+    ns3:geoId ns3:SK ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Slovakia ;
+    ns1:popData2020 5457873 ;
+    ns2:observation ns1:o0271,
+        ns1:o02710,
+        ns1:o02711,
+        ns1:o02712,
+        ns1:o02713,
+        ns1:o02714,
+        ns1:o02715,
+        ns1:o02716,
+        ns1:o02717,
+        ns1:o02718,
+        ns1:o02719,
+        ns1:o0272,
+        ns1:o02720,
+        ns1:o02721,
+        ns1:o02722,
+        ns1:o02723,
+        ns1:o02724,
+        ns1:o02725,
+        ns1:o02726,
+        ns1:o02727,
+        ns1:o02728,
+        ns1:o02729,
+        ns1:o0273,
+        ns1:o02730,
+        ns1:o02731,
+        ns1:o02732,
+        ns1:o0274,
+        ns1:o0275,
+        ns1:o0276,
+        ns1:o0277,
+        ns1:o0278,
+        ns1:o0279 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice28 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:SVN ;
+    ns3:geoId ns3:SI ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Slovenia ;
+    ns1:popData2020 2095861 ;
+    ns2:observation ns1:o0281,
+        ns1:o02810,
+        ns1:o02811,
+        ns1:o02812,
+        ns1:o02813,
+        ns1:o02814,
+        ns1:o02815,
+        ns1:o02816,
+        ns1:o02817,
+        ns1:o02818,
+        ns1:o02819,
+        ns1:o0282,
+        ns1:o02820,
+        ns1:o02821,
+        ns1:o02822,
+        ns1:o02823,
+        ns1:o02824,
+        ns1:o02825,
+        ns1:o02826,
+        ns1:o02827,
+        ns1:o02828,
+        ns1:o02829,
+        ns1:o0283,
+        ns1:o02830,
+        ns1:o02831,
+        ns1:o02832,
+        ns1:o0284,
+        ns1:o0285,
+        ns1:o0286,
+        ns1:o0287,
+        ns1:o0288,
+        ns1:o0289 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice29 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:ESP ;
+    ns3:geoId ns3:ES ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Spain ;
+    ns1:popData2020 47332614 ;
+    ns2:observation ns1:o0291,
+        ns1:o02910,
+        ns1:o02911,
+        ns1:o02912,
+        ns1:o02913,
+        ns1:o02914,
+        ns1:o02915,
+        ns1:o02916,
+        ns1:o02917,
+        ns1:o02918,
+        ns1:o02919,
+        ns1:o0292,
+        ns1:o02920,
+        ns1:o02921,
+        ns1:o02922,
+        ns1:o02923,
+        ns1:o02924,
+        ns1:o02925,
+        ns1:o02926,
+        ns1:o02927,
+        ns1:o02928,
+        ns1:o02929,
+        ns1:o0293,
+        ns1:o02930,
+        ns1:o02931,
+        ns1:o02932,
+        ns1:o0294,
+        ns1:o0295,
+        ns1:o0296,
+        ns1:o0297,
+        ns1:o0298,
+        ns1:o0299 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice3 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:BGR ;
+    ns3:geoId ns3:BG ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Bulgaria ;
+    ns1:popData2020 6951482 ;
+    ns2:observation ns1:o0031,
+        ns1:o00310,
+        ns1:o00311,
+        ns1:o00312,
+        ns1:o00313,
+        ns1:o00314,
+        ns1:o00315,
+        ns1:o00316,
+        ns1:o00317,
+        ns1:o00318,
+        ns1:o00319,
+        ns1:o0032,
+        ns1:o00320,
+        ns1:o00321,
+        ns1:o00322,
+        ns1:o00323,
+        ns1:o00324,
+        ns1:o00325,
+        ns1:o00326,
+        ns1:o00327,
+        ns1:o00328,
+        ns1:o00329,
+        ns1:o0033,
+        ns1:o00330,
+        ns1:o00331,
+        ns1:o00332,
+        ns1:o0034,
+        ns1:o0035,
+        ns1:o0036,
+        ns1:o0037,
+        ns1:o0038,
+        ns1:o0039 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice30 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:SWE ;
+    ns3:geoId ns3:SE ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Sweden ;
+    ns1:popData2020 10327589 ;
+    ns2:observation ns1:o0301,
+        ns1:o03010,
+        ns1:o03011,
+        ns1:o03012,
+        ns1:o03013,
+        ns1:o03014,
+        ns1:o03015,
+        ns1:o03016,
+        ns1:o03017,
+        ns1:o03018,
+        ns1:o03019,
+        ns1:o0302,
+        ns1:o03020,
+        ns1:o03021,
+        ns1:o03022,
+        ns1:o03023,
+        ns1:o03024,
+        ns1:o03025,
+        ns1:o03026,
+        ns1:o03027,
+        ns1:o03028,
+        ns1:o03029,
+        ns1:o0303,
+        ns1:o03030,
+        ns1:o03031,
+        ns1:o03032,
+        ns1:o0304,
+        ns1:o0305,
+        ns1:o0306,
+        ns1:o0307,
+        ns1:o0308,
+        ns1:o0309 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice4 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:HRV ;
+    ns3:geoId ns3:HR ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Croatia ;
+    ns1:popData2020 4058165 ;
+    ns2:observation ns1:o0041,
+        ns1:o00410,
+        ns1:o00411,
+        ns1:o00412,
+        ns1:o00413,
+        ns1:o00414,
+        ns1:o00415,
+        ns1:o00416,
+        ns1:o00417,
+        ns1:o00418,
+        ns1:o00419,
+        ns1:o0042,
+        ns1:o00420,
+        ns1:o00421,
+        ns1:o00422,
+        ns1:o00423,
+        ns1:o00424,
+        ns1:o00425,
+        ns1:o00426,
+        ns1:o00427,
+        ns1:o00428,
+        ns1:o00429,
+        ns1:o0043,
+        ns1:o00430,
+        ns1:o00431,
+        ns1:o00432,
+        ns1:o0044,
+        ns1:o0045,
+        ns1:o0046,
+        ns1:o0047,
+        ns1:o0048,
+        ns1:o0049 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice5 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:CYP ;
+    ns3:geoId ns3:CY ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Cyprus ;
+    ns1:popData2020 888005 ;
+    ns2:observation ns1:o0051,
+        ns1:o00510,
+        ns1:o00511,
+        ns1:o00512,
+        ns1:o00513,
+        ns1:o00514,
+        ns1:o00515,
+        ns1:o00516,
+        ns1:o00517,
+        ns1:o00518,
+        ns1:o00519,
+        ns1:o0052,
+        ns1:o00520,
+        ns1:o00521,
+        ns1:o00522,
+        ns1:o00523,
+        ns1:o00524,
+        ns1:o00525,
+        ns1:o00526,
+        ns1:o00527,
+        ns1:o00528,
+        ns1:o00529,
+        ns1:o0053,
+        ns1:o00530,
+        ns1:o00531,
+        ns1:o00532,
+        ns1:o0054,
+        ns1:o0055,
+        ns1:o0056,
+        ns1:o0057,
+        ns1:o0058,
+        ns1:o0059 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice6 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:CZE ;
+    ns3:geoId ns3:CZ ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Czechia ;
+    ns1:popData2020 10693939 ;
+    ns2:observation ns1:o0061,
+        ns1:o00610,
+        ns1:o00611,
+        ns1:o00612,
+        ns1:o00613,
+        ns1:o00614,
+        ns1:o00615,
+        ns1:o00616,
+        ns1:o00617,
+        ns1:o00618,
+        ns1:o00619,
+        ns1:o0062,
+        ns1:o00620,
+        ns1:o00621,
+        ns1:o00622,
+        ns1:o00623,
+        ns1:o00624,
+        ns1:o00625,
+        ns1:o00626,
+        ns1:o00627,
+        ns1:o00628,
+        ns1:o00629,
+        ns1:o0063,
+        ns1:o00630,
+        ns1:o00631,
+        ns1:o00632,
+        ns1:o0064,
+        ns1:o0065,
+        ns1:o0066,
+        ns1:o0067,
+        ns1:o0068,
+        ns1:o0069 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice7 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:DNK ;
+    ns3:geoId ns3:DK ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Denmark ;
+    ns1:popData2020 5822763 ;
+    ns2:observation ns1:o0071,
+        ns1:o00710,
+        ns1:o00711,
+        ns1:o00712,
+        ns1:o00713,
+        ns1:o00714,
+        ns1:o00715,
+        ns1:o00716,
+        ns1:o00717,
+        ns1:o00718,
+        ns1:o00719,
+        ns1:o0072,
+        ns1:o00720,
+        ns1:o00721,
+        ns1:o00722,
+        ns1:o00723,
+        ns1:o00724,
+        ns1:o00725,
+        ns1:o00726,
+        ns1:o00727,
+        ns1:o00728,
+        ns1:o00729,
+        ns1:o0073,
+        ns1:o00730,
+        ns1:o00731,
+        ns1:o00732,
+        ns1:o0074,
+        ns1:o0075,
+        ns1:o0076,
+        ns1:o0077,
+        ns1:o0078,
+        ns1:o0079 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice8 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:EST ;
+    ns3:geoId ns3:EE ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Estonia ;
+    ns1:popData2020 1328976 ;
+    ns2:observation ns1:o0081,
+        ns1:o00810,
+        ns1:o00811,
+        ns1:o00812,
+        ns1:o00813,
+        ns1:o00814,
+        ns1:o00815,
+        ns1:o00816,
+        ns1:o00817,
+        ns1:o00818,
+        ns1:o00819,
+        ns1:o0082,
+        ns1:o00820,
+        ns1:o00821,
+        ns1:o00822,
+        ns1:o00823,
+        ns1:o00824,
+        ns1:o00825,
+        ns1:o00826,
+        ns1:o00827,
+        ns1:o00828,
+        ns1:o00829,
+        ns1:o0083,
+        ns1:o00830,
+        ns1:o00831,
+        ns1:o00832,
+        ns1:o0084,
+        ns1:o0085,
+        ns1:o0086,
+        ns1:o0087,
+        ns1:o0088,
+        ns1:o0089 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns1:slice9 a ns2:Slice ;
+    ns3:countryterritoryCode ns3:FIN ;
+    ns3:geoId ns3:FI ;
+    ns1:continentExp ns3:Europe ;
+    ns1:countriesAndTerritories ns3:Finland ;
+    ns1:popData2020 5525292 ;
+    ns2:observation ns1:o0091,
+        ns1:o00910,
+        ns1:o00911,
+        ns1:o00912,
+        ns1:o00913,
+        ns1:o00914,
+        ns1:o00915,
+        ns1:o00916,
+        ns1:o00917,
+        ns1:o00918,
+        ns1:o00919,
+        ns1:o0092,
+        ns1:o00920,
+        ns1:o00921,
+        ns1:o00922,
+        ns1:o00923,
+        ns1:o00924,
+        ns1:o00925,
+        ns1:o00926,
+        ns1:o00927,
+        ns1:o00928,
+        ns1:o00929,
+        ns1:o0093,
+        ns1:o00930,
+        ns1:o00931,
+        ns1:o00932,
+        ns1:o0094,
+        ns1:o0095,
+        ns1:o0096,
+        ns1:o0097,
+        ns1:o0098,
+        ns1:o0099 ;
+    ns2:sliceStructure ns1:sliceByDate .
+
+ns3:geoId a ns2:DimensionProperty,
+        rdf:Property ;
+    rdfs:label "geography code "@en ;
+    ns2:concept <http://purl.org/linked-data/sdmx/2009/concept#refArea> ;
+    rdfs:range ns1:allgeographycode ;
+    rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/code#area> .
+
+ns1:continentExp a ns2:DimensionProperty,
+        rdf:Property ;
+    rdfs:label "refernce continent"@en ;
+    ns2:concept <http://purl.org/linked-data/sdmx/2009/concept#refArea> ;
+    rdfs:range ns1:allcontinents ;
+    rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/dimension#refArea> .
+
+ns1:popData2020 a ns2:DimensionProperty,
+        rdf:Property ;
+    rdfs:label "population of the country "@en ;
+    rdfs:range xsd:int64 ;
+    rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/measure#obsvalue> .
+
+ns1:sliceByDate a ns2:sliceKey ;
+    rdfs:label "slice by date"@en ;
+    ns2:componentProperty ns3:countryterritorycode,
+        ns3:geoId,
+        ns1:continentExp,
+        ns1:countriesAndTerritories,
+        ns1:popData2020 ;
+    rdfs:comment "Slice by grouping dates together, fixing area, geoid, popdata, countryterritoryCode,continentexp"@en .
+
+ns1:dataset1 a ns2:DataSet ;
+    rdfs:label "covid-19 dataset"@en ;
+    ns4:description "contains information on newly reported COVID-19 cases and deaths in EU/EEA countries"@en ;
+    ns4:publisher ns1:organization ;
+    ns4:subject <http://purl.org/linked-data/sdmx/2009/subject#1.4> ;
+    ns2:Slice ns1:slice1,
+        ns1:slice10,
+        ns1:slice11,
+        ns1:slice12,
+        ns1:slice13,
+        ns1:slice14,
+        ns1:slice15,
+        ns1:slice16,
+        ns1:slice17,
+        ns1:slice18,
+        ns1:slice19,
+        ns1:slice2,
+        ns1:slice20,
+        ns1:slice21,
+        ns1:slice22,
+        ns1:slice23,
+        ns1:slice24,
+        ns1:slice25,
+        ns1:slice26,
+        ns1:slice27,
+        ns1:slice28,
+        ns1:slice29,
+        ns1:slice3,
+        ns1:slice30,
+        ns1:slice4,
+        ns1:slice5,
+        ns1:slice6,
+        ns1:slice7,
+        ns1:slice8,
+        ns1:slice9 ;
+    ns2:structure ns1:dsd1 .
+
