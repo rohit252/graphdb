@@ -24,7 +24,7 @@ Download the ontotext_new folder on the desktop and do the following:
 
         - docker build -t imagename:<tag> . 
         - docker run --publish 7200:7200 imagename 
-  where imagename is the name that you want to the docker image it can be anything and generally its a good practice to use tags and also you can give any name to the tag.
+  where imagename is the name that we want to give to the docker image it can be anything and generally its a good practice to use tags and also we can give any name to the tag.
   
 Now, open the graphdb free version on the local host which we will get after running the docker. Once the graphdb is up, just create a repository with any id.
 
