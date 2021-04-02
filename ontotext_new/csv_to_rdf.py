@@ -60,7 +60,7 @@ sdmxmetadata = Namespace('http://purl.org/linked-data/sdmx/2009/metadata#')
 sdmxsubject = Namespace('http://purl.org/linked-data/sdmx/2009/subject#')
 dct = Namespace('http://purl.org/dc/terms/')
 
-'''  Making Dataset using Datacube'''
+'''  Creating Dataset using Datacube'''
 
 g.add((URIRef(eg+'dataset1'), RDF.type , URIRef(qb+'DataSet')))
 g.add((URIRef(eg+'dataset1'), RDFS.label, Literal("covid-19 dataset" ,lang ='en')))
@@ -74,11 +74,7 @@ for i in range(1,len(dist)+1):
     vslice = 'slice' + str(i)
     g.add((URIRef(eg+'dataset1'), URIRef(qb+'Slice'), URIRef(eg+vslice)))
 
-
-
-
-
-'''Making Data structure definition using Datacube '''
+'''Creating Data structure definition using Datacube '''
 ## initializing blank nodes ###
 
 y = BNode()
@@ -110,21 +106,21 @@ g.add((URIRef(eg+'dsd1'), URIRef(qb+'component'), y5))
 g.add((y5, URIRef(qb+'dimension'), URIRef(exgeo+'countryterritoryCode')))
 g.add((y5, URIRef(qb+'componentAttachment'), URIRef(qb+'Slice')))
 
-''' measures '''
+''' Creating measures using Datacube'''
 
 g.add((URIRef(eg+'dsd1'), URIRef(qb+'component'), y6))
 g.add((y6, URIRef(qb+'measure'), URIRef(eg+'deaths')))
 g.add((URIRef(eg+'dsd1'), URIRef(qb+'component'), y7))
 g.add((y7, URIRef(qb+'measure'), URIRef(eg+'cases')))
 
-''' attributes '''
+''' Creating attributes using Datacube'''
 
 g.add((URIRef(eg+'dsd1'), URIRef(qb+'component'), y8))
 g.add((y8, URIRef(qb+'attribute'), URIRef(sdmxattribute+'unitMeasure')))
 g.add((y8, URIRef(qb+'componentRequired'),Literal("True",datatype=XSD.boolean)))
 g.add((y8, URIRef(qb+'componentAttachment'),URIRef(qb+'DataSet')))
 
-''' slices '''
+''' Creating slices using Datacube '''
 
 g.add((URIRef(eg+'dsd1'), URIRef(qb+'sliceKey'), URIRef(eg+'sliceByDate')))
 
@@ -139,7 +135,7 @@ g.add((URIRef(eg+'sliceByDate'), URIRef(qb+'componentProperty'), URIRef(eg+'cont
 g.add((URIRef(eg+'sliceByDate'), URIRef(qb+'componentProperty'), URIRef(eg+'popData2020')))
 
 
-''' Dimensions and measures '''
+''' Creating Dimensions and measures using Datacube'''
 
 g.add((URIRef(eg+'dateRep'),RDF.type, RDF.Property))
 g.add((URIRef(eg+'dateRep'),RDF.type, URIRef(qb+'DimensionProperty')))
@@ -242,7 +238,7 @@ g.serialize(rdf_path, format='turtle')
 
 
 
-''' storing rdf based on datacube into GraphDB by using requests '''
+''' storing rdf based on datacube into GraphDB by using python requests '''
 
 
 headers = {
