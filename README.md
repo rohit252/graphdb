@@ -28,15 +28,15 @@ Download the ontotext_new folder on the desktop and do the following:
   
 Now, open the graphdb free version on the local host which we will get after running the docker. Once the graphdb is up, just create a repository with any id.
 
-2. open path.properties file, it is a configuration file which is used to store the path variables vlues required while executing the python script. This will make our code more generic and ensure that no need to do any changes in the python file.There are total three path variables in path.properties file:
+2. open path.properties file, it is a configuration file which is used to store the path variables values required while executing the python script. This will make our code more generic and ensure that no need to do any changes in the python file.There are total three path variables in path.properties file:
         
 	- **url_path** : where we can simply pass the url of the csv file.
 	- **rdf_path** : It can be used to store our rdf graph in turtle format locally. Although to run this program we don't require this variable path. So it is an optional,           just in case we want to store the turtle file locally we can use this path.
 	- **graphdb_path** : This is the path of our repository in GraphDb, just specify http://localhost:7200/repositories/repository-id/statements where repositor-id is the id of the repository that you created in GraphDB.
 
-NOTE: If you dont wish to store rdf locally then please remove **rdf_path** from path.properties and also comment out line number 26 and 237 in csv_to_rdf file and then use the files. As I was storing it locally just to see the contents in it that is why I used the paths but you can remove simply remove the paths if you dont want to store rdf file locally.
+NOTE: If you dont wish to store rdf locally then please remove **rdf_path** from path.properties and also comment out line number 26 and 237 in csv_to_rdf file and then use the files. As I was storing it locally just to see the contents in it that is why I used the paths but you can simply remove the paths if you dont want to store rdf file locally.
 
-3. run csv_to_rdf python file. Now it take the url of the csv file and convert it into rdf format and store it into the GraphDB repository. Now we can run the queries against the Database.
+3. run csv_to_rdf python file. Now it takes the url of the csv file and convert it into rdf format and store it into the GraphDB repository. Now we can run the queries against the Database.
 
 4. Also we have rdf.ttl file which we created using python rdflib library, although its not require to store rdf file in turtle format locally as I said above, but in case if you want to have a look at it then you can store it otherwise our script will directly store rdf graph into GraphDB repository.
 
