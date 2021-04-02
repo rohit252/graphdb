@@ -17,7 +17,7 @@ import configparser
 config = configparser.ConfigParser()
 
 ''' specify the path of path.properties file here '''
-config.readfp(open(r'C:\Users\Home\Desktop\ontotext\path.properties'))
+config.readfp(open('./path.properties'))
 
 #url= "https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv/data.csv" 
 
