@@ -18,7 +18,7 @@ Inside ontotext_new folder, we have two sub-folder (Screenshots and graph) and t
 
 steps to follow: 
 
-Download the ontotext_new folder on the dektop and do the following:
+Download the ontotext_new folder on the desktop and do the following:
 
 1. In graph sub-folder we have Dockerfile and graphdb zip file to build and run the image using commands:
 
@@ -28,13 +28,13 @@ Download the ontotext_new folder on the dektop and do the following:
   
 Now, open the graphdb free version on the local host which we will get after running the docker. Once the graphdb is up, just create a repository with any id.
 
-2. open path.properties file, it is config file where we can pass all the paths so that we dont need to search the paths inside our python file. We have three paths in path.properties file:
+2. open path.properties file, it is a configuration file which is used to store the path variables vlues required while executing the python script. This will make our code more generic and ensure that no need to do any changes in the python file.There are total three path variables in path.properties file:
         
-	- First path is url_path where we can simply pass the url of the csv file.
-	- Second path which is rdf_path can be used to locally store our rdf graph in turtle format. Although to run this program we dont require second path. So it is optional,           just in case you want to store the turtle file locally you can use this path.
+	- **url_path** : where we can simply pass the url of the csv file.
+	- **rdf_path** : It can be used to store our rdf graph in turtle format locally. Although to run this program we don't require this variable path. So it is an optional,           just in case we want to store the turtle file locally we can use this path.
 	- Third path is the path of our repository in GraphDb, just specify http://localhost:7200/repositories/repository-id/statements where repositor-id is the id of the                 repository that you created in GraphDB.
 
-NOTE: If you dont wish to store rdf locally then please remove rdf_path from path.properties and also comment out line number 26 and 237 in csv_to_rdf file and then use the files. As I was storing it locally just to see the contents in it that is why I used the paths but you can remove simply remove the paths if you dont want to store rdf file locally.
+NOTE: If you dont wish to store rdf locally then please remove **rdf_path** from path.properties and also comment out line number 26 and 237 in csv_to_rdf file and then use the files. As I was storing it locally just to see the contents in it that is why I used the paths but you can remove simply remove the paths if you dont want to store rdf file locally.
 
 3. run csv_to_rdf python file. Now it take the url of the csv file and convert it into rdf format and store it into the GraphDB repository. Now we can run the queries against the Database.
 
