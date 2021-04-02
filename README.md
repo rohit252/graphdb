@@ -36,7 +36,9 @@ Now, open the graphdb free version on the local host which we will get after run
 
 3. In csv_to_rdf python file first specify the path of path.properties file and run it. Now it take the url of the csv file and convert it into rdf format and store it into the GraphDB repository. Now we can run the queries against the Database.
 
-4. Finally, there is another folder named screenshots, where you can see some of the queries that I ran and their results. Also, there is some other screenshots depicting some of the insights of the work (different classes, their relationship and so on).
+4. Also we have rdf.ttl file which we created using python rdflib library, although its not require to store rdf file in turtleformat locally as I said above, but in case if you want to have a look at it then you can store it otherwise our script will directly store rdf graph into GraphDB repository.
+
+5. Finally, there is another folder named screenshots, where you can see some of the queries that I ran and their results. Also, there is some other screenshots depicting some of the insights of the work (different classes, their relationship and so on).
 
 Note: 
 
