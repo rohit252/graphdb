@@ -8,7 +8,7 @@ Please install all below pre-requisite in order to run the program:
 	- pip install configparser
 
 
-Inside ontotext_new folder, we have two sub-folder (screenshots and graph) and three files (one python file with name csv_to_rdf, another is path.properties file and last is turtle file with name rdf).
+Inside ontotext_new folder, we have two sub-folder (Screenshots and graph) and three files (one python file with name csv_to_rdf, another is path.properties file and last is turtle file with name rdf).
 
  Inside graph sub-folder we have:
 
