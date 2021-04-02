@@ -1,5 +1,15 @@
 ''' Project for representing covid dataset in knowledge graphs using graphDB '''
 
+
+-------------------Requirements---------------
+
+ Please install all requirememts before moving forward
+    
+	- pip install pandas
+	- pip install rdflib
+	- pip install configparser
+
+
 Inside ontology folder, we have two sub-folder (screenshots and graph) and two files (one python file with name read_covid_dataset and turtle file with name covid).
 
 Steps to follow:
